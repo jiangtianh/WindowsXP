@@ -1,0 +1,11 @@
+.menu-bar-border-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+.menu-bar-border-right {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.menu-bar-buttons:hover {
+    background-color: rgb(22, 96, 232) !important;
+    color: white !important;
+}

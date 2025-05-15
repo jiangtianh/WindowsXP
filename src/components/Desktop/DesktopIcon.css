@@ -1,0 +1,17 @@
+.desktop-icon-text {
+    background-color: transparent;
+    text-shadow: rgb(1, 1, 1) 0px 1px 1px, rgb(0, 0, 0) 0px 0px 4px;
+}
+
+.desktop-icon-text-selected {
+    background-color: rgb(11, 97, 255);
+    text-shadow: none;
+}
+
+.desktop-icon {
+    filter: opacity(1.0);
+}
+
+.desktop-icon-selected {
+    filter: opacity(0.5);
+}
