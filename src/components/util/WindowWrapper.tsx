@@ -103,7 +103,7 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children }) =>
     return (
         <Rnd
             ref={windowRef}
-            className={`window cursor-default ${windowState.isFocused ? '' : 'window-unfocused'}`}
+            className={`window cursor-default ${windowState.isFocused ? '' : 'window-unfocused'} window-wrapper`}
             style={{ display: windowState.isMinimized ? 'none' : 'inline-block', zIndex: zIndex }}
             size={{ width: windowState.position.width, height: windowState.position.height }}
             position={localposition}
@@ -126,7 +126,7 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children }) =>
                     </div>
                 </div>
 
-                <div className="window-body window-body flex-grow h-[calc(100%-28px)] w-[calc(100%-6px)] overflow-auto">
+                <div className="window-body flex-grow h-[calc(100%-28px)] w-[calc(100%-6px)] overflow-auto">
                     {children}
                 </div>
             </div>
