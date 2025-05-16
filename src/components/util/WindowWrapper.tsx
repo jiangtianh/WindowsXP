@@ -12,9 +12,10 @@ interface WindowWrapperProps {
     children: React.ReactNode;
     minWidth?: number;
     minHeight?: number;
+    disableMaximize?: boolean;
 }
 
-const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children }) => {
+const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children, minWidth, minHeight, disableMaximize }) => {
 
     const dispatch = useDispatch();
     const windowState = useSelector((state: RootState) => state.windows.windows[windowKey]);
@@ -115,13 +116,24 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children }) =>
             onResizeStop={handleResizeStop}
             disableDragging={windowState.isMaximized}
             enableResizing={!windowState.isMaximized}
+            minWidth={minWidth || 300}
+            minHeight={minHeight || 200}
         >
             <div onClick={handleWindowClick} className="w-full h-full">
                 <div className="title-bar">
-                    <div className="title-bar-text">{windowName}</div>
+                    <div className="title-bar-text">
+                        <img src={windowState.icon} alt={windowName} className="w-4 h-4 inline-block mr-1" />
+                        {windowName}
+                    </div>
                     <div className="title-bar-controls">
                         <button aria-label="Minimize" className="cursor-pointer" onClick={handleMinimize}></button>
-                        <button aria-label="Maximize" className="cursor-pointer" onClick={handleMaximize}></button>
+                        <button
+                            aria-label={windowState.isMaximized ? "Restore" : "Maximize"}
+                            className={`cursor-pointer ${disableMaximize ? 'maximize-disabled' : ''}`}
+                            onClick={handleMaximize}
+                            disabled={disableMaximize}
+                        >
+                        </button>
                         <button aria-label="Close" className="cursor-pointer" onClick={handleClose}></button>
                     </div>
                 </div>

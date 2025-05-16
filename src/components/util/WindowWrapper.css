@@ -20,3 +20,7 @@
     margin: 3px !important;
     margin-top: 0 !important;
 }
+
+.window-wrapper .title-bar .title-bar-controls .maximize-disabled {
+    opacity: 0.6;
+}

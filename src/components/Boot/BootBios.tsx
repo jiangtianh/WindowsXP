@@ -119,7 +119,7 @@ const BootBios: React.FC = () => {
     }, [bootComplete, dispatch]);
 
     return (
-        <div className="bg-black text-white font-family-perfect-dos-vga-437-win text-sm h-full w-full p-8 flex flex-col">
+        <div className="h-svh w-screen bg-black text-white font-family-perfect-dos-vga-437-win text-sm p-8 flex flex-col">
             <div className="flex-1 mt-10">
                 {bootMessages.map((message, index) => (
                     <div

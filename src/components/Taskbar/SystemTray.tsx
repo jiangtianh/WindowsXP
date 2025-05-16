@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
-
-
-import volumeIcon from '@assets/icons/volume-icon-sm.webp';
-import fullscreenIcon from '@assets/icons/full-screen-icon-sm.webp';
+import { useSelector } from 'react-redux';
+import { selectMuted } from '../../services/volumeSlice';
 
 import VolumeControllerModal from './VolumeControllerModal';
+
+import volumeIcon from '@assets/icons/Volume32x32.webp';
+import volumeMuteIcon from '@assets/icons/Mute32x32.webp';
+import fullscreenIcon from '@assets/icons/FullScreen32x32.webp';
+
+
 
 const SystemTray = () => {
 
@@ -16,27 +20,24 @@ const SystemTray = () => {
         return () => clearInterval(timer);
     }, []);
 
+    const [showVolumeController, setShowVolumeController] = useState(false);
 
-    const [isFullscreen, setIsFullscreen] = useState(false);
+    const isMuted = useSelector(selectMuted);
+    const volumeControlIcon = isMuted ? volumeMuteIcon : volumeIcon;
+
     const toggleFullscreen = () => {
         if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen().then(() => {
-                setIsFullscreen(true);
-            }).catch(err => {
+            document.documentElement.requestFullscreen().catch(err => {
                 console.error(`Error attempting to enable fullscreen: ${err.message}`);
             });
-        } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen().then(() => {
-                    setIsFullscreen(false);
-                }).catch(err => {
-                    console.error(`Error attempting to exit fullscreen: ${err.message}`);
-                });
-            }
+        } else if (document.exitFullscreen) {
+            document.exitFullscreen().catch(err => {
+                console.error(`Error attempting to exit fullscreen: ${err.message}`);
+            });
         }
     };
 
-    const [showVolumeController, setShowVolumeController] = useState(false);
+
 
 
     return (
@@ -49,11 +50,13 @@ const SystemTray = () => {
             />
 
 
-            <img src={volumeIcon}
+            <img src={volumeControlIcon}
                 alt="Volume"
                 className="w-4 h-4 cursor-pointer"
                 onClick={() => setShowVolumeController(true)}
             />
+
+
             <VolumeControllerModal
                 isOpen={showVolumeController}
                 onClose={() => setShowVolumeController(false)}

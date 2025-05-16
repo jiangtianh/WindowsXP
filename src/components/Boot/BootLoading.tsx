@@ -22,7 +22,7 @@ const BootLoading: React.FC = () => {
     }, [dispatch]);
 
     return (
-        <div className="flex flex-col items-center justify-center w-full h-full bg-black">
+        <div className="h-svh w-screen flex flex-col items-center justify-center bg-black">
             <div>
                 <img src={xpBootLogoWhite} alt="Windows XP Boot Logo" className="w-100 mx-auto" />
             </div>

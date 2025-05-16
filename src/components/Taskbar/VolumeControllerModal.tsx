@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setVolume, toggleMute, selectMuted, selectVolume } from '../../services/volumeSlice';
 
-import volumeIcon from '@assets/icons/volume-icon-sm.webp';
+import volumeIcon from '@assets/icons/Volume32x32.webp';
 
 interface VolumeControllerModalProps {
     isOpen: boolean;

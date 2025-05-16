@@ -12,7 +12,7 @@ const TopCommonMenuBar: React.FC<TopCommonMenuBarProps> = (
 ) => {
 
     return (
-        <div className="flex justify-between h-6 items-center">
+        <div className="flex justify-between h-6 items-center select-none">
             <div className="flex items-center h-full px-0.5 pt-0.5 pb-px w-full menu-bar-border-bottom menu-bar-border-right">
                 {items.map((item, index) => (
                     <div key={index} className="flex items-center h-full cursor-pointer px-1.5 menu-bar-buttons">
@@ -20,7 +20,6 @@ const TopCommonMenuBar: React.FC<TopCommonMenuBarProps> = (
                     </div>
                 ))}
             </div>
-
 
             {showWindowsBadge && (
                 <div className="flex items-center menu-bar-border-bottom h-full w-10 justify-center bg-gray-100">

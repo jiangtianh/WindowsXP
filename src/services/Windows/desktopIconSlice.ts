@@ -1,44 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../store";
-import type { WindowKey } from "../types";
+import type { WindowKey, DesktopIconCoordinates } from "../types";
+import { initialDesktopIconState } from "./initialDesktopIconState";
 
-import NotepadIcon from "@/assets/icons/notepad-icon.webp";
-
-export interface DesktopIconCoordinates {
-    gridX: number;
-    gridY: number;
-}
-
-export interface DesktopIconInfo {
-    title: string;
-    icon: string;
-    coordinates: DesktopIconCoordinates;
-}
-
-
-interface DesktopIconsState {
-    desktopIcons: Record<WindowKey, DesktopIconInfo>;
-    gridDimensions: {
-        columns: number;
-        rows: number;
-    };
-}
-
-const initialState: DesktopIconsState = {
-    desktopIcons: {
-        'Notepad': {
-            title: 'Notepad',
-            icon: NotepadIcon,
-            coordinates: { gridX: 0, gridY: 0 },
-        }
-    },
+const initialState = {
+    desktopIcons: initialDesktopIconState,
     gridDimensions: {
         columns: 2, // Default value
         rows: 6     // Default value
     }
 }
-
 
 export const desktopIconSlice = createSlice({
     name: "desktopIcons",

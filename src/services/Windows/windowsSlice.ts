@@ -2,33 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 import { initialWindowState } from "./initialWindowState";
-import type { WindowKey } from "../types";
+import type { WindowKey, WindowsState, WindowPosition } from "../types";
 
 import { TASKBAR_HEIGHT } from "../../components/Taskbar";
-
-export interface WindowPosition {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-}
-
-export interface WindowState {
-    isOpen: boolean;
-    isFocused: boolean;
-    isMaximized: boolean;
-    isMinimized: boolean;
-    position: WindowPosition;
-    savedPosition: WindowPosition | null;
-    title: string;
-    icon: string;
-}
-
-interface WindowsState {
-    windows: Record<WindowKey, WindowState>;
-    openQueue: WindowKey[];
-    taskBarList: WindowKey[];
-}
 
 
 const initialState: WindowsState = {
@@ -36,7 +12,6 @@ const initialState: WindowsState = {
     openQueue: [],
     taskBarList: []
 }
-
 
 const windowsSlice = createSlice({
     name: "windows",
@@ -149,7 +124,6 @@ const windowsSlice = createSlice({
                 }
             }
         }
-
     }
 });
 

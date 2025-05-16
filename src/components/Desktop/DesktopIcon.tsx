@@ -5,7 +5,7 @@ import type { RootState } from "../../services/store";
 import { useRef } from "react";
 
 import type { WindowKey } from "../../services/types";
-import type { DesktopIconInfo } from "../../services/Windows/desktopIconSlice";
+import type { DesktopIconInfo } from "../../services/types";
 import { moveIcon } from "../../services/Windows/desktopIconSlice";
 import { openWindow } from "../../services/Windows/windowsSlice";
 
@@ -34,19 +34,21 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ windowKey, iconInfo, gridCell
             x: iconInfo.coordinates.gridX * gridCellSize.width,
             y: iconInfo.coordinates.gridY * gridCellSize.height
         });
-    }, [iconInfo.coordinates, gridCellSize]);
+    }, [iconInfo.coordinates.gridX, iconInfo.coordinates.gridY, gridCellSize.width, gridCellSize.height]);
 
     const handleDragStop = (_e: any, data: { x: number; y: number }) => {
         const gridX = Math.floor(data.x / gridCellSize.width);
         const gridY = Math.floor(data.y / gridCellSize.height);
 
-        const boundedGridX = Math.min(Math.max(0, gridX), gridDimensions.columns);
-        const boundedGridY = Math.min(Math.max(0, gridY), gridDimensions.rows);
+        const boundedGridX = Math.min(Math.max(0, gridX), gridDimensions.columns - 1);
+        const boundedGridY = Math.min(Math.max(0, gridY), gridDimensions.rows - 1);
 
-        dispatch(moveIcon({
-            windowKey,
-            coordinates: { gridX: boundedGridX, gridY: boundedGridY }
-        }));
+        if (boundedGridX !== iconInfo.coordinates.gridX || boundedGridY !== iconInfo.coordinates.gridY) {
+            dispatch(moveIcon({
+                windowKey,
+                coordinates: { gridX: boundedGridX, gridY: boundedGridY }
+            }));
+        }
     };
 
     const handleClick = (e: React.MouseEvent) => {
@@ -81,7 +83,8 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ windowKey, iconInfo, gridCell
         >
             <div
                 ref={nodeRef}
-                className="w-20 h-20 flex justify-center items-center"
+                className="w-20 h-20 flex justify-center items-center absolute"
+                style={{ left: 0, top: 0 }}
             >
                 <div className="cursor-pointer flex flex-col items-center"
                     onClick={handleClick}

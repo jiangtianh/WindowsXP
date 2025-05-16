@@ -1,6 +1,9 @@
-import NotepadIcon from "@/assets/icons/notepad-icon.webp";
+import type { WindowKey, WindowState } from "../types";
 
-export const initialWindowState = {
+
+import NotepadIcon from "@/assets/icons/Notepad128x128.webp";
+
+export const initialWindowState: Record<WindowKey, WindowState> = {
     'Notepad': {
         isOpen: false,
         isFocused: false,
