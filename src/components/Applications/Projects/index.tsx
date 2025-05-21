@@ -1,15 +1,14 @@
 import WindowWrapper from "../../util/WindowWrapper";
 import type { WindowKey } from "../../../services/types";
 
-import NotepadContent from "./NotepadContent";
+import ProjectsContent from "./ProjectsContent";
 
-
-const Notepad: React.FC = () => {
-    const windowKey: WindowKey = "Notepad";
+const Projects: React.FC = () => {
+    const windowKey: WindowKey = "Projects";
     return (
         <WindowWrapper windowKey={windowKey}>
-            <NotepadContent windowKey={windowKey} />
+            <ProjectsContent windowKey={windowKey} />
         </WindowWrapper>
     );
 };
-export default Notepad;
+export default Projects;

@@ -1,0 +1,29 @@
+.window-top-navigation-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.window-top-navigation-bar .top-buttons {
+    border: 1px solid transparent;
+    background: transparent;
+}
+.window-top-navigation-bar .top-buttons:not(.disabled):hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px -1px 1px inset;
+    border: 1px solid oklch(86.9% 0.005 56.366);
+}
+
+.window-top-navigation-bar .top-buttons.disabled {
+    cursor: default;
+}
+
+.window-top-navigation-bar .top-buttons.disabled img {
+    filter: grayscale(100%);
+}
+
+
+
+.down-arrow {
+    content: "";
+    border-width: 3px 3px 0px;
+    border-color: rgb(0, 0, 0) transparent;
+}

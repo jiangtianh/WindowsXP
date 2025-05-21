@@ -1,13 +1,15 @@
 import useSound from "use-sound";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { unfocusAllWindows } from "../../services/Windows/windowsSlice";
 import type { RootState } from "../../services/store";
 
 import Taskbar from "../Taskbar";
 import DesktopIcons from "./DesktopIcons";
 
 import Notepad from "../Applications/Notepad";
-import { unfocusAllWindows } from "../../services/Windows/windowsSlice";
+import Projects from "../Applications/Projects";
+import CV from "../Applications/CV";
 
 const Desktop: React.FC = () => {
     const dispatch = useDispatch();
@@ -31,6 +33,8 @@ const Desktop: React.FC = () => {
                 <DesktopIcons />
 
                 <Notepad />
+                <CV />
+                <Projects />
 
             </div>
             <Taskbar />

@@ -12,10 +12,13 @@ interface WindowWrapperProps {
     children: React.ReactNode;
     minWidth?: number;
     minHeight?: number;
+    maxWidth?: number;
+    maxHeight?: number;
     disableMaximize?: boolean;
+    enableResizing?: boolean;
 }
 
-const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children, minWidth, minHeight, disableMaximize }) => {
+const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children, minWidth, minHeight, maxWidth, maxHeight, disableMaximize, enableResizing }) => {
 
     const dispatch = useDispatch();
     const windowState = useSelector((state: RootState) => state.windows.windows[windowKey]);
@@ -115,9 +118,11 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children, minW
             onDragStop={handleDragStop}
             onResizeStop={handleResizeStop}
             disableDragging={windowState.isMaximized}
-            enableResizing={!windowState.isMaximized}
+            enableResizing={enableResizing && !windowState.isMaximized}
             minWidth={minWidth || 300}
             minHeight={minHeight || 200}
+            maxHeight={maxHeight}
+            maxWidth={maxWidth}
         >
             <div onClick={handleWindowClick} className="w-full h-full">
                 <div className="title-bar">

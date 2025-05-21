@@ -1,0 +1,33 @@
+.window-side-menu {
+    background-image: linear-gradient(rgb(116, 138, 255) 0%, rgb(64, 87, 211) 100%);
+}
+
+.window-side-menu .window-side-menu-section {
+    color: rgb(12, 50, 125);
+    background-image: linear-gradient(to right, rgba(180, 200, 251, .87) 0%, rgba(164, 185, 251, .87) 50%, rgba(180, 200, 251, .87) 100%);
+}
+
+.window-side-menu-section .window-side-menu-section-header {
+    background-image: linear-gradient(to right, rgb(240, 240, 255) 0px, rgb(240, 240, 255) 30%, rgb(168, 188, 255) 100%);
+}
+
+.window-side-menu-section .window-side-menu-section-header:hover {
+    color: #1C68FF;
+}
+
+.window-side-menu-section-header .arrow-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url('/img/icons/top-icon-card-window.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.window-side-menu-section-header .arrow-icon.collapsed {
+    transform: rotate(180deg);
+}
+
+.window-side-menu-section-header:hover .arrow-icon {
+    background-image: url('/img/icons/top-icon-card-window-active.webp');
+}
