@@ -42,7 +42,7 @@ const DesktopIcons: React.FC = () => {
     const gridTemplateRows = `repeat(${gridDimensions.rows}, ${GRID_HEIGHT}px)`;
 
     return (
-        <div className="h-full w-full overflow-hidden"
+        <div className="h-full w-full overflow-hidden select-none"
             style={{
                 paddingTop: `${paddingTop}px`,
                 paddingLeft: `${paddingX}px`,

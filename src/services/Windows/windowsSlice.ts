@@ -85,7 +85,6 @@ const windowsSlice = createSlice({
 
         updateWindowPosition: (state, action: PayloadAction<{ key: WindowKey; position: WindowPosition }>) => {
             const { key, position } = action.payload;
-            if (state.windows[key].isMaximized) return;
             state.windows[key].position = position;
         },
 
@@ -105,6 +104,12 @@ const windowsSlice = createSlice({
             }
         },
 
+        setMaximizedOff: (state, action: PayloadAction<WindowKey>) => {
+            const key = action.payload;
+            state.windows[key].isMaximized = false;
+            // Don't restore the saved position, just keep the current one
+        },
+
         maximizeWindow: (state, action: PayloadAction<WindowKey>) => {
             const key = action.payload;
             const currentWindow = state.windows[key];
@@ -119,8 +124,8 @@ const windowsSlice = createSlice({
                 currentWindow.savedPosition = { ...currentWindow.position };
                 currentWindow.position = {
                     x: 0, y: 0,
-                    width: window.innerWidth || 800, // Fallback to 800 if window.innerWidth is not available
-                    height: (window.innerHeight - TASKBAR_HEIGHT) || 600 // Fallback to 600 if window.innerHeight is not available
+                    width: window.innerWidth || 800,
+                    height: (window.innerHeight - TASKBAR_HEIGHT) || 600
                 }
             }
         }
@@ -135,6 +140,7 @@ export const {
     unfocusAllWindows,
     updateWindowPosition,
     minimizeWindow,
+    setMaximizedOff,
     maximizeWindow
 } = windowsSlice.actions;
 

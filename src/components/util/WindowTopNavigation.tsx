@@ -20,6 +20,8 @@ interface WindowTopNavigationProp {
     onBackClick?: () => void;
     forwardActive?: boolean;
     onForwardClick?: () => void;
+    upActive?: boolean;
+    onUpClick?: () => void;
 }
 
 const WindowTopNavigation: React.FC<WindowTopNavigationProp> = ({
@@ -27,7 +29,9 @@ const WindowTopNavigation: React.FC<WindowTopNavigationProp> = ({
     backActive = false,
     onBackClick,
     forwardActive = false,
-    onForwardClick
+    onForwardClick,
+    upActive = false,
+    onUpClick,
 }) => {
 
     const currentWindow = useSelector((state: RootState) => state.windows.windows[windowKey]);
@@ -44,6 +48,11 @@ const WindowTopNavigation: React.FC<WindowTopNavigationProp> = ({
         }
     };
 
+    const handleUpclick = () => {
+        if (upActive && onUpClick) {
+            onUpClick();
+        }
+    };
 
     return (
         <div className="font-family-tahoma flex-shrink-0 select-none">
@@ -67,7 +76,10 @@ const WindowTopNavigation: React.FC<WindowTopNavigationProp> = ({
                         <div className="block border-solid down-arrow"></div>
                     </div>
 
-                    <div className="flex items-center gap-1 h-8 px-1 top-buttons rounded-xs mx-px cursor-pointer">
+                    <div
+                        className="flex items-center gap-1 h-8 px-1 top-buttons rounded-xs mx-px cursor-pointer"
+                        onClick={handleUpclick}
+                    >
                         <img src={FolderUpIcon} alt="Up" className="w-5 h-5 flex-shrink-0" />
                     </div>
                 </div>

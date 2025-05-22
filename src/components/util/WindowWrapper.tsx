@@ -3,7 +3,7 @@ import { Rnd } from "react-rnd";
 import { useSelector, useDispatch } from "react-redux";
 import type { WindowKey } from "../../services/types";
 import type { RootState } from "../../services/store";
-import { focusWindow, closeWindow, updateWindowPosition, maximizeWindow, minimizeWindow } from "../../services/Windows/windowsSlice";
+import { focusWindow, closeWindow, updateWindowPosition, maximizeWindow, minimizeWindow, setMaximizedOff } from "../../services/Windows/windowsSlice";
 
 import "./WindowWrapper.css";
 
@@ -71,6 +71,16 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children, minW
         dispatch(maximizeWindow(windowKey));
     };
 
+    const handleResizeStart = (_e: any, _direction: any, ref: HTMLElement) => {
+        const currentRect = ref.getBoundingClientRect();
+        setLocalPosition({
+            x: currentRect.left,
+            y: currentRect.top
+        });
+        if (windowState.isMaximized) {
+            dispatch(setMaximizedOff(windowKey));
+        }
+    };
     const handleResizeStop = (_e: any, _direction: any, ref: HTMLElement, _delta: any, position: { x: number; y: number }) => {
         dispatch(updateWindowPosition({
             key: windowKey,
@@ -81,6 +91,15 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children, minW
                 height: parseInt(ref.style.height, 10) || windowState.position.height
             }
         }));
+        setLocalPosition({
+            x: position.x,
+            y: position.y
+        });
+        // If window was maximized, turn off maximized state but keep current position
+        if (windowState.isMaximized) {
+            // Just turn off the isMaximized flag without restoring saved position
+            dispatch(setMaximizedOff(windowKey));
+        }
     };
 
     const handleDrag = (_e: any, d: { x: number; y: number }) => {
@@ -116,9 +135,10 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children, minW
             onMouseDown={handleFocus}
             onDrag={handleDrag}
             onDragStop={handleDragStop}
+            onResizeStart={handleResizeStart}
             onResizeStop={handleResizeStop}
             disableDragging={windowState.isMaximized}
-            enableResizing={enableResizing && !windowState.isMaximized}
+            enableResizing={enableResizing !== false}
             minWidth={minWidth || 300}
             minHeight={minHeight || 200}
             maxHeight={maxHeight}

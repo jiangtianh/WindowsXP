@@ -45,16 +45,16 @@ const WindowSideMenu: React.FC<WindowSideMenuProps> = ({ items }) => {
             items: [
                 { icon: PropertiesIcon, label: "View system information" },
                 { icon: ProgramsIcon, label: "Add or remove programs" },
-                { icon: ControlPanelIcon, label: "Change a settings" }
+                { icon: ControlPanelIcon, label: "Change a setting" }
             ]
         },
         Other: {
             title: "Other",
             items: [
-                { icon: MyNetworkPlacesIcon, label: "My network places" },
-                { icon: MyDocumentsIcon, label: "My docments" },
-                { icon: FolderClosedIcon, label: "Shared documents" },
-                { icon: ControlPanelIcon, label: "Control panel" }
+                { icon: MyNetworkPlacesIcon, label: "My Network Places" },
+                { icon: MyDocumentsIcon, label: "My Docments" },
+                { icon: FolderClosedIcon, label: "Shared Documents" },
+                { icon: ControlPanelIcon, label: "Control Panel" }
             ]
         },
         Details: {
@@ -66,14 +66,14 @@ const WindowSideMenu: React.FC<WindowSideMenuProps> = ({ items }) => {
     }
 
     return (
-        <div className="flex flex-col flex-shrink-0 gap-3 window-side-menu w-32 md:w-48 h-full overflow-hidden p-2.5 select-none">
+        <div className="flex flex-col flex-shrink-0 gap-3 window-side-menu w-32 md:w-48 h-full overflow-hidden p-2.5 select-none font-family-tahoma">
             {items?.map((item, index) => {
                 const section = sectionData[item];
                 const isCollapsed = collapsedSections[item];
                 return (
                     <div key={index} className="window-side-menu-section rounded-t-sm">
                         <div
-                            className="window-side-menu-section-header flex flex-row justify-between items-center rounded-t-sm px-1 py-px cursor-pointer"
+                            className="window-side-menu-section-header flex flex-row justify-between items-center rounded-t-sm pe-1 pl-2 py-1 cursor-pointer"
                             onClick={() => toggleSection(item)}
                         >
                             <span>{section.title}</span>

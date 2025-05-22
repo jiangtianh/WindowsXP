@@ -26,7 +26,10 @@ const CVContent: React.FC<CVContentProps> = ({ windowKey }) => {
                             </div>
                         </div>
                         <div>
-                            <button onClick={() => window.open('https://drive.google.com/file/d/1aiE4eCTDnKY7xAmEaaYVfC_xEyoOlrnt/view?usp=sharing', '_blank')}>
+                            <button
+                                className="cursor-pointer"
+                                onClick={() => window.open('https://drive.google.com/file/d/1aiE4eCTDnKY7xAmEaaYVfC_xEyoOlrnt/view?usp=sharing', '_blank')}
+                            >
                                 Download PDF
                             </button>
                         </div>
