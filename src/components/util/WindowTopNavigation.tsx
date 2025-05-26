@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../services/store";
 import type { WindowKey } from "../../services/types";
@@ -22,6 +23,8 @@ interface WindowTopNavigationProp {
     onForwardClick?: () => void;
     upActive?: boolean;
     onUpClick?: () => void;
+    pathNames?: string[];
+    currentIndex?: number;
 }
 
 const WindowTopNavigation: React.FC<WindowTopNavigationProp> = ({
@@ -32,9 +35,23 @@ const WindowTopNavigation: React.FC<WindowTopNavigationProp> = ({
     onForwardClick,
     upActive = false,
     onUpClick,
+    pathNames = [],
+    currentIndex = 0,
 }) => {
 
     const currentWindow = useSelector((state: RootState) => state.windows.windows[windowKey]);
+
+    const [displayPath, setDisplayPath] = useState(currentWindow.title);
+
+    useEffect(() => {
+        if (pathNames && pathNames.length > 0) {
+            const currentPath = pathNames.slice(0, currentIndex + 1).join("/");
+            setDisplayPath(currentPath);
+        } else {
+            setDisplayPath(currentWindow.title);
+        }
+    }, [pathNames, currentIndex, currentWindow.title]);
+
 
     const handleBackClick = () => {
         if (backActive && onBackClick) {
@@ -114,7 +131,7 @@ const WindowTopNavigation: React.FC<WindowTopNavigationProp> = ({
                     <div className="flex items-center">
                         <img src={currentWindow.icon} alt={currentWindow.title} className="w-3.5 h-3.5" />
                         <span className="px-1 truncate mt-px">
-                            {currentWindow.title}
+                            {displayPath}
                         </span>
                     </div>
                     <div className="hover:brightness-110 cursor-pointer flex-shrink-0">

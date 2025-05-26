@@ -135,13 +135,3 @@
 .font-family-perfect-dos-vga-437-win {
   font-family: var(--font-family-perfect-dos-vga-437-win);
 }
-
-.cursor-default {
-  cursor: var(--cursor-default) !important;
-}
-.cursor-pointer {
-  cursor: var(--cursor-pointer) !important;
-}
-.cursor-wait {
-  cursor: var(--cursor-wait) !important;
-}

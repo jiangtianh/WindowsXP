@@ -6,7 +6,7 @@ function App() {
 
 
   return (
-    <div className="cursor-default">
+    <div>
       <BootController />
     </div>
   )

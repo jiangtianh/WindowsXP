@@ -5,8 +5,7 @@ import TopCommonMenuBar from "../../util/TopCommonMenuBar";
 import WindowTopNavigation from "../../util/WindowTopNavigation";
 import WindowSideMenu from "../../util/WindowSideMenu";
 
-import { projectsContentData } from "./ProjectsContentData";
-
+import { projectsContentData, renderProjectConetent } from "./ProjectsContentData";
 import "./ProjectContent.css";
 
 interface ProjectsContentProps {
@@ -82,26 +81,27 @@ const ProjectsContent: React.FC<ProjectsContentProps> = ({ windowKey }) => {
         return grouped;
     };
 
+
     const renderContent = () => {
         const current = getCurrentProjectItem();
 
         if (!current) return <h1>Invalid path</h1>;
 
         if (current.type === 'file') {
-            return current.content || <h1>No content available</h1>
+            if (!current.content) return <h1>File have no content</h1>;
+            return renderProjectConetent(current.content);
         } else if (current.type === 'folder') {
             if (!current.children) return <h1>Folder have no children</h1>;
 
             if (current.showCategories) {
                 const grouped = groupItemsByCategory(current.children);
-                console.log(grouped);
                 return (
-                    <div>
+                    <div className="pt-1">
                         {/* Render categories */}
                         {Object.entries(grouped)
                             .filter(([category]) => category !== 'uncategorized')
                             .map(([category, items]) => (
-                                <div key={category} className="relative mb-3">
+                                <div key={category} className="relative mb-3 select-none">
                                     <span className="text-xs font-bold px-3">{category}</span>
                                     <div className="w-80 h-px my-1 folder-category-divider"></div>
                                     <div className="flex flex-wrap gap-2 pb-3 w-full px-3">
@@ -128,7 +128,7 @@ const ProjectsContent: React.FC<ProjectsContentProps> = ({ windowKey }) => {
 
                         {/* Render uncategorized items first */}
                         {grouped.uncategorized.length > 0 && (
-                            <div className="relative mb-3">
+                            <div className="relative mb-3 select-none">
                                 <span className="text-xs font-bold px-3">Other</span>
                                 <div className="w-80 h-px my-1 folder-category-divider"></div>
                                 <div className="flex flex-wrap gap-2 pb-3 w-full px-3">
@@ -156,7 +156,7 @@ const ProjectsContent: React.FC<ProjectsContentProps> = ({ windowKey }) => {
             } else {
                 return (
                     <div>
-                        <div className="relative mb-3">
+                        <div className="relative mb-3 select-none">
                             <div className="flex flex-wrap gap-2 pb-3 w-full px-3">
                                 {Object.entries(current.children).map(([id, item]) => (
                                     <div
@@ -194,6 +194,8 @@ const ProjectsContent: React.FC<ProjectsContentProps> = ({ windowKey }) => {
                 onForwardClick={handleForwardClick}
                 upActive={currentIndex > 0}
                 onUpClick={handleUpclick}
+                pathNames={pathNames}
+                currentIndex={currentIndex}
             />
 
             <div className="w-full h-full flex relative flex-1 min-h-0">
@@ -202,7 +204,7 @@ const ProjectsContent: React.FC<ProjectsContentProps> = ({ windowKey }) => {
                 </div>
 
                 {/* PlaceHolder  */}
-                <div className="flex-1 overflow-auto h-full bg-white flex-col w-full pt-1 font-family-tahoma">
+                <div className="flex-1 overflow-auto h-full bg-white flex-col w-full font-family-tahoma">
                     {renderContent()}
                 </div>
             </div>
