@@ -10,6 +10,7 @@ import DesktopIcons from "./DesktopIcons";
 import Notepad from "../Applications/Notepad";
 import Projects from "../Applications/Projects";
 import CV from "../Applications/CV";
+import Minesweeper from "../Applications/Minesweeper";
 
 const Desktop: React.FC = () => {
     const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const Desktop: React.FC = () => {
                 <Notepad />
                 <CV />
                 <Projects />
+                <Minesweeper />
 
             </div>
             <Taskbar />

@@ -38,11 +38,11 @@ const DesktopIcons: React.FC = () => {
         }
     }, [dispatch, paddingX, paddingTop]);
 
-    const gridTemplateColumns = `repeat(${gridDimensions.columns}, ${GRID_WIDTH}px)`;
-    const gridTemplateRows = `repeat(${gridDimensions.rows}, ${GRID_HEIGHT}px)`;
+    // const gridTemplateColumns = `repeat(${gridDimensions.columns}, ${GRID_WIDTH}px)`;
+    // const gridTemplateRows = `repeat(${gridDimensions.rows}, ${GRID_HEIGHT}px)`;
 
     return (
-        <div className="h-full w-full overflow-hidden select-none"
+        <div className="h-full w-full overflow-hidden select-none font-family-tahoma"
             style={{
                 paddingTop: `${paddingTop}px`,
                 paddingLeft: `${paddingX}px`,

@@ -86,14 +86,14 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ windowKey, iconInfo, gridCell
                 className="w-20 h-20 flex justify-center items-center absolute"
                 style={{ left: 0, top: 0 }}
             >
-                <div className="cursor-pointer flex flex-col items-center"
+                <div className="cursor-pointer flex flex-col items-center gap-0.5"
                     onClick={handleClick}
                     onDoubleClick={handleDoubleClick}
                 >
                     <img
                         src={iconInfo.icon}
                         alt={iconInfo.title}
-                        className={`h-8 w-8 mb-1 ${isSelected ? 'desktop-icon-selected' : 'desktop-icon'}`}
+                        className={`h-10 w-10 mb-1 ${isSelected ? 'desktop-icon-selected' : 'desktop-icon'}`}
                         draggable="false"
                     />
                     <span className={`text-white text-xs text-center truncate ${isSelected ? 'desktop-icon-text-selected' : 'desktop-icon-text'} px-1`}>

@@ -22,7 +22,7 @@ const Shutdown: React.FC = () => {
 
 
     return (
-        <div className="bg-black h-full w-full"></div>
+        <div className="bg-black h-screen w-screen"></div>
     )
 };
 export default Shutdown;

@@ -58,7 +58,7 @@ const LoginPage: React.FC = () => {
                                             <img src={userIcon} alt="User Icon" className="w-full h-full rounded-lg" />
                                         </div>
                                         <div className="text-white text-2xl font-family-trebuchet">
-                                            Jiangtian
+                                            Jiangtian Han
                                         </div>
                                     </div>
 

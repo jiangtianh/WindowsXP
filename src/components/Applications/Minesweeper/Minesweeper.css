@@ -1,0 +1,63 @@
+.minesweeper-container {
+    background-color: rgb(192, 192, 192);
+
+}
+
+.minesweeper-toolbar {
+    border-width: 2px;
+    border-top-color: rgb(128, 128, 128);
+    border-right-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-left-color: rgb(128, 128, 128);
+}
+
+
+.minesweeper-counter {
+    border-width: 1px;
+    border-top-color: rgb(128, 128, 128);
+    border-right-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-left-color: rgb(128, 128, 128);
+}
+
+
+.minesweeper-button-wrapper {
+    border-color: rgb(128, 128, 128);
+}
+
+.minesweeper-button {
+    background-color: rgb(192, 192, 192);
+    border-width: 2px;
+    border-top-color: rgb(245, 245, 245);
+    border-left-color: rgb(245, 245, 245);
+    border-bottom-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+}
+.minesweeper-button:active {
+    border-color: transparent;
+}
+
+.minesweeper-cell-cover {
+    border-width: 3px;
+    border-top-color: rgb(245, 245, 245);
+    border-left-color: rgb(245, 245, 245);
+    border-bottom-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    background-color: rgb(192, 192, 192);
+}
+.minesweeper-cell-open {
+    border-top: 2px solid rgb(128, 128, 128);
+    border-left: 2px solid rgb(128, 128, 128);
+}
+
+.minesweeper-board {
+    border-width: 4px;
+    border-left-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    border-bottom-color: rgb(245, 245, 245);
+    border-right-color: rgb(245, 245, 245);
+}
+
+.minesweeper-mine-clicked {
+    background-color: rgb(255, 0, 0);
+}
