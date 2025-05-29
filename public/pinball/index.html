@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Cadet Pinball</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: monospace;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+        }
+
+        #status {
+            margin-top: 40px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        #progress {
+            width: 256px;
+            height: 8px;
+            margin-bottom: 16px;
+        }
+
+        #canvas {
+            display: none;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #canvas.ready {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="status">Downloading...</div>
+        <progress id="progress" max="100" value="0"></progress>
+        <canvas id="canvas" tabindex="-1" oncontextmenu="event.preventDefault()"></canvas>
+    </div>
+
+    <script>
+        var statusElement = document.getElementById('status');
+        var progressElement = document.getElementById('progress');
+        var canvasElement = document.getElementById('canvas');
+
+        var Module = {
+            preRun: [],
+            postRun: [],
+            print: function () {
+                return function (text) {
+                    if (arguments.length > 1) {
+                        text = Array.prototype.slice.call(arguments).join(' ');
+                    }
+                    console.log(text);
+                };
+            }(),
+            printErr: function (text) {
+                if (arguments.length > 1) {
+                    text = Array.prototype.slice.call(arguments).join(' ');
+                }
+                console.error(text);
+            },
+            canvas: (function () {
+                canvasElement.addEventListener("webglcontextlost", function (e) {
+                    alert('WebGL context lost. You will need to reload the page.');
+                    e.preventDefault();
+                }, false);
+                return canvasElement;
+            })(),
+            setStatus: function (text) {
+                if (!Module.setStatus.last) {
+                    Module.setStatus.last = { time: Date.now(), text: '' };
+                }
+
+                if (text !== Module.setStatus.last.text) {
+                    var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+                    var now = Date.now();
+
+                    if (!(m && now - Module.setStatus.last.time < 30)) {
+                        Module.setStatus.last.time = now;
+                        Module.setStatus.last.text = text;
+
+                        if (m) {
+                            text = m[1];
+                            progressElement.value = parseInt(m[2]) * 100;
+                            progressElement.max = parseInt(m[4]) * 100;
+                            progressElement.hidden = false;
+                        } else {
+                            progressElement.value = 0;
+                            progressElement.max = 0;
+                            progressElement.hidden = true;
+                            canvasElement.style.display = 'block';
+                            canvasElement.classList.add('ready');
+                        }
+
+                        statusElement.innerHTML = text;
+
+                        if (text === '') {
+                            statusElement.style.display = 'none';
+                            progressElement.style.display = 'none';
+                            canvasElement.style.display = 'block';
+                            canvasElement.classList.add('ready');
+                        } else {
+                            statusElement.style.display = '';
+                            progressElement.style.display = '';
+                        }
+                    }
+                }
+            },
+            totalDependencies: 0,
+            monitorRunDependencies: function (left) {
+                this.totalDependencies = Math.max(this.totalDependencies, left);
+                Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
+            },
+            locateFile: function (path) {
+                return '/pinball/' + path;
+            }
+        };
+
+        Module.setStatus('Downloading...');
+
+        window.onerror = function () {
+            Module.setStatus('Exception thrown, see JavaScript console');
+            Module.setStatus = function (text) {
+                if (text) {
+                    Module.printErr('[post-exception status] ' + text);
+                }
+            };
+        };
+    </script>
+    <script async src="/pinball/SpaceCadetPinball.js"></script>
+</body>
+
+</html>

@@ -2,8 +2,8 @@ import type { WindowKey, DesktopIconInfo } from "../types"
 import NotepadIcon from "@/assets/icons/Notepad128x128.webp";
 import ProjectIcon from "@/assets/icons/StartMenuPrograms128x128.webp";
 import CVIcon from "@/assets/icons/FaxSenderInformation128x128.webp";
-import MinesweeperIcon from "@assets/icons/Minesweeper128x128.webp"; // Placeholder icon, replace with actual Minesweeper icon
-
+import MinesweeperIcon from "@assets/icons/Minesweeper128x128.webp";
+import PinballIcon from "@assets/icons/Pinball128x128.webp";
 
 export const initialDesktopIconState: Record<WindowKey, DesktopIconInfo> = {
     'Projects': {
@@ -25,5 +25,15 @@ export const initialDesktopIconState: Record<WindowKey, DesktopIconInfo> = {
         title: 'Minesweeper',
         icon: MinesweeperIcon,
         coordinates: { gridX: 0, gridY: 3 },
-    }
+    },
+    'jsdos': {
+        title: 'Jsdos',
+        icon: NotepadIcon, // Placeholder icon, replace with actual Pinball icon
+        coordinates: { gridX: 1, gridY: 0 },
+    },
+    'Pinball': {
+        title: 'Pinball',
+        icon: PinballIcon, // Placeholder icon, replace with actual Pinball icon
+        coordinates: { gridX: 1, gridY: 1 },
+    },
 }

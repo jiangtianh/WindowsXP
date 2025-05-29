@@ -172,7 +172,7 @@ const MinesweeperContent: React.FC = () => {
                             <img key={i} src={digitSrc(+n)} alt={n} />
                         ))}
                     </div>
-                    <div className="minesweeper-button-wrapper border-l border-t border-gray-128 active:rounded-xxs active:border-l-2 active:border-t-2 active:border-b active:border-r">
+                    <div className="minesweeper-button-wrapper cursor-pointer border-l border-t border-gray-128 active:rounded-xxs active:border-l-2 active:border-t-2 active:border-b active:border-r">
                         <div
                             onClick={resetGame}
                             className="minesweeper-button w-7 h-7 flex items-center justify-center rounded-xs outline-none"

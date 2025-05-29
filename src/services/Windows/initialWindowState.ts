@@ -4,7 +4,8 @@ import type { WindowKey, WindowState } from "../types";
 import NotepadIcon from "@assets/icons/Notepad128x128.webp";
 import ProjectIcon from "@assets/icons/StartMenuPrograms128x128.webp";
 import CVIcon from "@assets/icons/FaxSenderInformation128x128.webp";
-import MinesweeperIcon from "@assets/icons/Minesweeper128x128.webp"; // Placeholder icon, replace with actual Minesweeper icon
+import MinesweeperIcon from "@assets/icons/Minesweeper128x128.webp";
+import PinballIcon from "@assets/icons/Pinball128x128.webp";
 
 export const initialWindowState: Record<WindowKey, WindowState> = {
     'Notepad': {
@@ -46,5 +47,25 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         savedPosition: null,
         title: 'Minesweeper',
         icon: MinesweeperIcon,
-    }
+    },
+    'jsdos': {
+        isOpen: false,
+        isFocused: false,
+        isMaximized: false,
+        isMinimized: false,
+        position: { x: 300, y: 200, width: 400, height: 300 },
+        savedPosition: null,
+        title: 'Jsdos',
+        icon: NotepadIcon, // Placeholder icon, replace with actual Pinball icon
+    },
+    'Pinball': {
+        isOpen: false,
+        isFocused: false,
+        isMaximized: false,
+        isMinimized: false,
+        position: { x: 300, y: 200, width: 400, height: 300 },
+        savedPosition: null,
+        title: 'Pinball',
+        icon: PinballIcon, // Placeholder icon, replace with actual Pinball icon
+    },
 }

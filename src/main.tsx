@@ -16,12 +16,3 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </Provider>
 )
-
-console.log("Testing cursor URLs:");
-fetch("/img/cursors/default-cursor.cur")
-  .then(res => console.log("Default cursor status:", res.status))
-  .catch(err => console.error("Default cursor error:", err));
-
-fetch("/img/cursors/pointer-cursor.cur")
-  .then(res => console.log("Pointer cursor status:", res.status))
-  .catch(err => console.error("Pointer cursor error:", err));

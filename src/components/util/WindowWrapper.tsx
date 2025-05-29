@@ -144,8 +144,8 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children, minW
             maxHeight={maxHeight}
             maxWidth={maxWidth}
         >
-            <div onClick={handleWindowClick} className="w-full h-full">
-                <div className="title-bar">
+            <div onClick={handleWindowClick} className="w-full h-full cursor-default">
+                <div className="title-bar select-none">
                     <div className="title-bar-text">
                         <img src={windowState.icon} alt={windowName} className="w-4 h-4 inline-block mr-1" />
                         {windowName}
@@ -163,7 +163,7 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children, minW
                     </div>
                 </div>
 
-                <div className="window-body flex-grow h-[calc(100%-28px)] w-[calc(100%-6px)] overflow-auto">
+                <div className="window-body flex-grow h-[calc(100%-28px)] w-[calc(100%-6px)] overflow-auto cursor-default">
                     {children}
                 </div>
             </div>

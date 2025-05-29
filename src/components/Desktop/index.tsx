@@ -11,6 +11,8 @@ import Notepad from "../Applications/Notepad";
 import Projects from "../Applications/Projects";
 import CV from "../Applications/CV";
 import Minesweeper from "../Applications/Minesweeper";
+import Jsdos from "../Applications/jsdos";
+import Pinball from "../Applications/Pinball";
 
 const Desktop: React.FC = () => {
     const dispatch = useDispatch();
@@ -37,6 +39,11 @@ const Desktop: React.FC = () => {
                 <CV />
                 <Projects />
                 <Minesweeper />
+
+                <Jsdos />
+
+                <Pinball />
+
 
             </div>
             <Taskbar />

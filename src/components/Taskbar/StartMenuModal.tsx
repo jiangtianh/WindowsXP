@@ -37,7 +37,7 @@ const StartMenuModal: React.FC<StartMenuModalProps> = ({ open, onClose }) => {
         return () => document.removeEventListener('mousedown', handleClick);
     }, [open, onClose]);
 
-    // if (!open) return null; // Uncomment this line if you want to conditionally render the modal based on `open` prop
+    if (!open) return null; // Uncomment this line if you want to conditionally render the modal based on `open` prop
 
     const handleLogoff = () => {
         dispatch(setBootPhase(BootPhase.LOGIN));
