@@ -6,6 +6,8 @@ import ProjectIcon from "@assets/icons/StartMenuPrograms128x128.webp";
 import CVIcon from "@assets/icons/FaxSenderInformation128x128.webp";
 import MinesweeperIcon from "@assets/icons/Minesweeper128x128.webp";
 import PinballIcon from "@assets/icons/Pinball128x128.webp";
+import GameControllerIcon from "@assets/icons/GameController128x128.webp";
+import ReiIcon from "@assets/icons/Rei128x128.webp";
 
 export const initialWindowState: Record<WindowKey, WindowState> = {
     'Notepad': {
@@ -56,7 +58,7 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         position: { x: 310, y: 190, width: 440, height: 330 },
         savedPosition: null,
         title: 'Jsdos',
-        icon: NotepadIcon, // Placeholder icon, replace with actual Pinball icon
+        icon: GameControllerIcon,
     },
     'Pinball': {
         isOpen: false,
@@ -76,6 +78,6 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         position: { x: 0, y: 0, width: 0, height: 0 }, // Not used
         savedPosition: null, // Not used
         title: 'Rei Ayanami',
-        icon: NotepadIcon, // Placeholder icon, replace with actual Rei Ayanami icon
+        icon: ReiIcon,
     }
 }

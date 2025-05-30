@@ -4,6 +4,8 @@ import ProjectIcon from "@/assets/icons/StartMenuPrograms128x128.webp";
 import CVIcon from "@/assets/icons/FaxSenderInformation128x128.webp";
 import MinesweeperIcon from "@assets/icons/Minesweeper128x128.webp";
 import PinballIcon from "@assets/icons/Pinball128x128.webp";
+import GameControllerIcon from "@assets/icons/GameController128x128.webp";
+import ReiIcon from "@/assets/icons/Rei128x128.webp";
 
 export const initialDesktopIconState: Record<WindowKey, DesktopIconInfo> = {
     'Projects': {
@@ -28,7 +30,7 @@ export const initialDesktopIconState: Record<WindowKey, DesktopIconInfo> = {
     },
     'jsdos': {
         title: 'Jsdos',
-        icon: NotepadIcon, // Placeholder icon, replace with actual Pinball icon
+        icon: GameControllerIcon,
         coordinates: { gridX: 1, gridY: 0 },
     },
     'Pinball': {
@@ -38,7 +40,7 @@ export const initialDesktopIconState: Record<WindowKey, DesktopIconInfo> = {
     },
     'VirtualRei': {
         title: 'Rei Ayanami',
-        icon: NotepadIcon, // Placeholder icon, replace with actual Rei Ayanami icon
+        icon: ReiIcon,
         coordinates: { gridX: 0, gridY: 4 },
     }
 }
