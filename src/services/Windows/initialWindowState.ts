@@ -53,7 +53,7 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         isFocused: false,
         isMaximized: false,
         isMinimized: false,
-        position: { x: 300, y: 200, width: 400, height: 300 },
+        position: { x: 310, y: 190, width: 440, height: 330 },
         savedPosition: null,
         title: 'Jsdos',
         icon: NotepadIcon, // Placeholder icon, replace with actual Pinball icon
@@ -63,9 +63,19 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         isFocused: false,
         isMaximized: false,
         isMinimized: false,
-        position: { x: 300, y: 200, width: 400, height: 300 },
+        position: { x: 350, y: 250, width: 400, height: 300 },
         savedPosition: null,
         title: 'Pinball',
         icon: PinballIcon, // Placeholder icon, replace with actual Pinball icon
     },
+    'VirtualRei': {
+        isOpen: false,
+        isFocused: false,
+        isMaximized: false, // Not used
+        isMinimized: false, // Not used
+        position: { x: 0, y: 0, width: 0, height: 0 }, // Not used
+        savedPosition: null, // Not used
+        title: 'Rei Ayanami',
+        icon: NotepadIcon, // Placeholder icon, replace with actual Rei Ayanami icon
+    }
 }

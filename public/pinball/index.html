@@ -161,6 +161,131 @@
             };
         };
     </script>
+
+    <script>
+        // Global volume state
+        let currentVolume = 1.0;
+        let isMuted = false;
+
+        // Function to apply volume to Emscripten audio
+        function applyEmscriptenVolume(volume, muted) {
+            currentVolume = volume;
+            isMuted = muted;
+
+            console.log('Applying Emscripten volume:', volume, 'muted:', muted);
+
+            // Method 1: Try to access SDL2 audio context
+            if (typeof Module !== 'undefined' && Module.SDL2 && Module.SDL2.audioContext) {
+                try {
+                    const audioCtx = Module.SDL2.audioContext;
+
+                    // Create or get master gain node
+                    if (!audioCtx.masterGain) {
+                        audioCtx.masterGain = audioCtx.createGain();
+                        // We need to intercept the audio graph
+                        const originalDestination = audioCtx.destination;
+                        audioCtx.masterGain.connect(originalDestination);
+
+                        // Override the destination for new connections
+                        Object.defineProperty(audioCtx, 'destination', {
+                            get: function () { return audioCtx.masterGain; },
+                            configurable: true
+                        });
+                    }
+
+                    audioCtx.masterGain.gain.value = muted ? 0 : volume;
+                    console.log('Applied volume via SDL2 audioContext:', audioCtx.masterGain.gain.value);
+                    return true;
+                } catch (e) {
+                    console.log('SDL2 audioContext method failed:', e);
+                }
+            }
+
+            // Method 2: Try to patch the Web Audio API before game starts
+            if (typeof AudioContext !== 'undefined') {
+                // Override AudioContext creation to add volume control
+                const OriginalAudioContext = window.AudioContext || window.webkitAudioContext;
+                if (OriginalAudioContext && !window.audioContextPatched) {
+                    window.audioContextPatched = true;
+
+                    const PatchedAudioContext = function (...args) {
+                        const ctx = new OriginalAudioContext(...args);
+
+                        // Create master gain node
+                        const masterGain = ctx.createGain();
+                        const originalDestination = ctx.destination;
+                        masterGain.connect(originalDestination);
+                        masterGain.gain.value = currentVolume;
+
+                        // Store reference
+                        ctx.masterGain = masterGain;
+
+                        // Override destination
+                        Object.defineProperty(ctx, 'destination', {
+                            get: function () { return masterGain; },
+                            configurable: true
+                        });
+
+                        return ctx;
+                    };
+
+                    // Copy static methods
+                    Object.setPrototypeOf(PatchedAudioContext, OriginalAudioContext);
+                    PatchedAudioContext.prototype = OriginalAudioContext.prototype;
+
+                    window.AudioContext = PatchedAudioContext;
+                    if (window.webkitAudioContext) {
+                        window.webkitAudioContext = PatchedAudioContext;
+                    }
+
+                    console.log('Patched AudioContext for volume control');
+                }
+            }
+
+            return false;
+        }
+
+        // Listen for volume changes from parent window
+        window.addEventListener('message', function (event) {
+            if (event.data.type === 'VOLUME_CHANGE') {
+                const volume = event.data.volume;
+                const muted = event.data.muted;
+
+                console.log('Received volume change:', volume, muted);
+                applyEmscriptenVolume(volume, muted);
+            }
+        });
+
+        // Hook into Module when it's ready
+        var originalModule = window.Module || {};
+        window.Module = Object.assign(originalModule, {
+            postRun: [
+                ...(originalModule.postRun || []),
+                function () {
+                    console.log('Pinball game loaded, setting up volume control');
+                    console.log('Module keys:', Object.keys(Module));
+
+                    // Apply current volume after game loads
+                    setTimeout(() => {
+                        applyEmscriptenVolume(currentVolume, isMuted);
+
+                        // Send ready message to parent
+                        if (window.parent !== window) {
+                            window.parent.postMessage({
+                                type: 'GAME_READY',
+                                source: 'pinball'
+                            }, '*');
+                        }
+                    }, 1000);
+                }
+            ]
+        });
+
+        // Patch AudioContext before the game script loads
+        if (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined') {
+            applyEmscriptenVolume(1.0, false);
+        }
+    </script>
     <script async src="/pinball/SpaceCadetPinball.js"></script>
 </body>
 

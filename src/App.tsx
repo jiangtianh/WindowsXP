@@ -6,7 +6,7 @@ function App() {
 
 
   return (
-    <div>
+    <div className="flex flex-col h-full w-full">
       <BootController />
     </div>
   )

@@ -2,6 +2,7 @@ import type { WindowKey } from "../../../services/types";
 import { useRef, useEffect, useState, useMemo, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../../services/store";
+import { selectVolume, selectMuted } from "../../../services/volumeSlice";
 
 import { Rnd } from "react-rnd";
 import { focusWindow, closeWindow, updateWindowPosition, maximizeWindow, minimizeWindow, setMaximizedOff } from "../../../services/Windows/windowsSlice";
@@ -12,6 +13,8 @@ const Pinball: React.FC = () => {
     const windowState = useSelector((state: RootState) => state.windows.windows[windowKey]);
     const windowName = useSelector((state: RootState) => state.windows.windows[windowKey]?.title);
     const openQueue = useSelector((state: RootState) => state.windows.openQueue);
+    const volumeLevel = useSelector(selectVolume);
+    const isMuted = useSelector(selectMuted);
 
     const windowRef = useRef<Rnd>(null);
     const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -23,6 +26,51 @@ const Pinball: React.FC = () => {
         y: windowState?.position.y || 100
     });
 
+    const applyVolumeToIframe = useCallback(() => {
+        const iframe = iframeRef.current;
+        if (!iframe || !iframe.contentWindow) return;
+
+        const effectiveVolume = isMuted ? 0 : volumeLevel / 100;
+        try {
+            iframe.contentWindow.postMessage({
+                type: 'VOLUME_CHANGE',
+                volume: effectiveVolume,
+                muted: isMuted,
+                source: 'parent'
+            }, '*');
+
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            if (iframeDoc) {
+                // Control any audio/video elements
+                const audioElements = iframeDoc.querySelectorAll('audio, video');
+                audioElements.forEach((element) => {
+                    if (element instanceof HTMLAudioElement || element instanceof HTMLVideoElement) {
+                        element.volume = effectiveVolume;
+                        element.muted = isMuted;
+                    }
+                });
+                // Send custom event to canvas games
+                iframe.contentWindow.dispatchEvent(new CustomEvent('volumeChange', {
+                    detail: { volume: effectiveVolume, muted: isMuted }
+                }));
+            }
+        } catch (error) {
+            console.debug('Cross-origin iframe, using postMessage only');
+        }
+    }, [volumeLevel, isMuted]);
+
+    // Listen for messages from iframe
+    useEffect(() => {
+        const handleMessage = (event: MessageEvent) => {
+            if (event.data.type === 'GAME_READY' && event.data.source === 'pinball') {
+                console.log('Pinball game is ready, applying volume');
+                setTimeout(applyVolumeToIframe, 100);
+            }
+        };
+
+        window.addEventListener('message', handleMessage);
+        return () => window.removeEventListener('message', handleMessage);
+    }, [applyVolumeToIframe]);
 
     const focusIframeAndCanvas = useCallback(() => {
         const iframe = iframeRef.current;
@@ -101,7 +149,7 @@ const Pinball: React.FC = () => {
         dispatch(maximizeWindow(windowKey));
     };
 
-    const handleResizeStart = (_e: any, _direction: any, ref: HTMLElement) => {
+    const handleResizeStart = (_e: any, _direction: any) => {
         setIsResizing(true);
         handleFocus();
         if (windowState.isMaximized) {

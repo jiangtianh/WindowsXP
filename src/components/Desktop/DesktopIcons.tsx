@@ -42,11 +42,13 @@ const DesktopIcons: React.FC = () => {
     // const gridTemplateRows = `repeat(${gridDimensions.rows}, ${GRID_HEIGHT}px)`;
 
     return (
-        <div className="h-full w-full overflow-hidden select-none font-family-tahoma"
+        <div className="h-full w-full select-none font-family-tahoma absolute"
             style={{
                 paddingTop: `${paddingTop}px`,
                 paddingLeft: `${paddingX}px`,
                 paddingRight: `${paddingX}px`,
+                overflow: 'hidden', // Keep overflow hidden only on icons
+                zIndex: 1 // Low z-index so windows appear above
             }}
         >
             <div className="relative w-full h-full">

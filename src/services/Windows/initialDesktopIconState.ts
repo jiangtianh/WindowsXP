@@ -33,7 +33,12 @@ export const initialDesktopIconState: Record<WindowKey, DesktopIconInfo> = {
     },
     'Pinball': {
         title: 'Pinball',
-        icon: PinballIcon, // Placeholder icon, replace with actual Pinball icon
+        icon: PinballIcon,
         coordinates: { gridX: 1, gridY: 1 },
     },
+    'VirtualRei': {
+        title: 'Rei Ayanami',
+        icon: NotepadIcon, // Placeholder icon, replace with actual Rei Ayanami icon
+        coordinates: { gridX: 0, gridY: 4 },
+    }
 }

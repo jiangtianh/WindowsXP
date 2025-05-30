@@ -1,11 +1,10 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import type { RootState } from "../../services/store";
 import TaskbarWindowButton from "./TaskbarWindowButton";
 
 
 const TaskbarWindows: React.FC = () => {
 
-    const dispatch = useDispatch();
     const openWindows = useSelector((state: RootState) => state.windows.taskBarList);
 
     return (

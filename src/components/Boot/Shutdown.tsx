@@ -1,12 +1,14 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch } from "../../services/store";
 import { BootPhase, setBootPhase } from "../../services/bootStatusSlice";
 import useSound from "use-sound";
+import { selectVolume } from "../../services/volumeSlice";
 
 const Shutdown: React.FC = () => {
 
     const dispatch = useDispatch<AppDispatch>();
+    const volume = useSelector(selectVolume);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -15,7 +17,7 @@ const Shutdown: React.FC = () => {
         return () => clearTimeout(timer);
     }, [dispatch]);
 
-    const [playShutdownSound] = useSound("/sound/shutdown-windows.mp3");
+    const [playShutdownSound] = useSound("/sound/shutdown-windows.mp3", { volume: volume / 100 });
     useEffect(() => {
         playShutdownSound();
     }, [playShutdownSound]);
