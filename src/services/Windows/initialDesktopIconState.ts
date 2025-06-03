@@ -42,5 +42,10 @@ export const initialDesktopIconState: Record<WindowKey, DesktopIconInfo> = {
         title: 'Rei Ayanami',
         icon: ReiIcon,
         coordinates: { gridX: 0, gridY: 4 },
-    }
+    },
+    'Solitaire': {
+        title: 'Solitaire',
+        icon: GameControllerIcon,
+        coordinates: { gridX: 1, gridY: 2 },
+    },
 }

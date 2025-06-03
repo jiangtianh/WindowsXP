@@ -68,7 +68,7 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         position: { x: 350, y: 250, width: 400, height: 300 },
         savedPosition: null,
         title: 'Pinball',
-        icon: PinballIcon, // Placeholder icon, replace with actual Pinball icon
+        icon: PinballIcon,
     },
     'VirtualRei': {
         isOpen: false,
@@ -79,5 +79,15 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         savedPosition: null, // Not used
         title: 'Rei Ayanami',
         icon: ReiIcon,
+    },
+    'Solitaire': {
+        isOpen: true,
+        isFocused: false,
+        isMaximized: false,
+        isMinimized: false,
+        position: { x: 20, y: 20, width: 650, height: 600 },
+        savedPosition: null,
+        title: 'Solitaire',
+        icon: NotepadIcon, // Placeholder icon, replace with actual Solitaire icon
     }
 }
