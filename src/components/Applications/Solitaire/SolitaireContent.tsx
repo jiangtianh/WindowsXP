@@ -321,7 +321,7 @@ const SolitaireContent: React.FC = () => {
                             isDraggable={index === wasteState.length - 1} // Only the top card in the waste is draggable
                             isBeingDragged={dragSource?.type === 'waste' && dragSource.cardIndex === index}
                             onDragStart={() => handleDragStart('waste', 0, index)}
-                            onDragEnd={(x, y, event) => handleDragEnd(event)}
+                            onDragEnd={(_x, _y, event) => handleDragEnd(event)}
                         />
                     ))}
 
@@ -336,7 +336,7 @@ const SolitaireContent: React.FC = () => {
                                 isDraggable={cardIndex === pile.length - 1} // Only the top card is draggable
                                 onDragStart={() => handleDragStart('foundation', pileIndex, cardIndex)}
                                 onDrag={(deltaX, deltaY) => handleDrag(deltaX, deltaY)}
-                                onDragEnd={(x, y, event) => handleDragEnd(event)}
+                                onDragEnd={(_x, _y, event) => handleDragEnd(event)}
                             />
                         ))
                     )}
@@ -361,7 +361,7 @@ const SolitaireContent: React.FC = () => {
                                     stackDragOffset={isPartOfDraggedStack ? draggedStack.offset : undefined}
                                     onDragStart={() => handleDragStart('tableau', pileIndex, cardIndex)}
                                     onDrag={(deltaX, deltaY) => handleDrag(deltaX, deltaY)} // Add this line
-                                    onDragEnd={(x, y, event) => handleDragEnd(event)}
+                                    onDragEnd={(_x, _y, event) => handleDragEnd(event)}
                                 />
                             );
                         })

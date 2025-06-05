@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import type { Card } from "./SolitaireContent";
 import { Rnd } from 'react-rnd';
 import cardSpirit from "@assets/cards.gif";
@@ -130,7 +130,7 @@ const SolitaireCard: React.FC<SolitaireCardProps> = ({
                 });
                 if (onDragStart) onDragStart();
             }}
-            onDrag={(e, d) => {
+            onDrag={(e, _d) => {
                 if (dragStartPos && onDrag) {
                     // Handle both mouse and touch events
                     const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
