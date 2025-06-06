@@ -69,7 +69,7 @@ const SystemTray = () => {
 
 
     return (
-        <div className="system-tray absolute right-0 text-white h-full flex items-center px-1.5 sm:px-3 gap-1 select-none font-family-trebuchet">
+        <div className="system-tray text-white h-full flex items-center px-1.5 sm:px-3 gap-1 select-none font-family-trebuchet">
 
             <img src={fullscreenIcon}
                 alt="Fullscreen"

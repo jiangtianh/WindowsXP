@@ -18,9 +18,9 @@ const TaskbarLeft: React.FC = () => {
 
     return (
         <>
-            <div className="overflow-hidden h-full flex items-center">
+            <div className="overflow-hidden h-full flex items-center flex-grow">
                 <div
-                    className="start-button text-white h-full text-lg cursor-pointer flex items-center"
+                    className="start-button text-white h-full text-lg cursor-pointer flex items-center flex-shrink-0"
                     onClick={handleStartButtonClick}
                 >
                     <div className="flex items-center gap-1 pr-5 pl-2 italic font-bold select-none">

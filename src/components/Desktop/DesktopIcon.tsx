@@ -8,6 +8,7 @@ import type { WindowKey } from "../../services/types";
 import type { DesktopIconInfo } from "../../services/types";
 import { moveIcon } from "../../services/Windows/desktopIconSlice";
 import { openWindow } from "../../services/Windows/windowsSlice";
+import { GRID_HEIGHT, GRID_WIDTH } from "./DesktopIcons";
 
 import "./DesktopIcon.css";
 
@@ -83,8 +84,8 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ windowKey, iconInfo, gridCell
         >
             <div
                 ref={nodeRef}
-                className="w-20 h-20 flex justify-center items-center absolute"
-                style={{ left: 0, top: 0 }}
+                className="flex justify-center absolute"
+                style={{ left: 0, top: 0, width: gridCellSize.width, height: gridCellSize.height }}
             >
                 <div className="cursor-pointer flex flex-col items-center gap-0.5"
                     onClick={handleClick}
@@ -96,7 +97,10 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ windowKey, iconInfo, gridCell
                         className={`h-10 w-10 mb-1 ${isSelected ? 'desktop-icon-selected' : 'desktop-icon'}`}
                         draggable="false"
                     />
-                    <span className={`text-white text-xs text-center truncate ${isSelected ? 'desktop-icon-text-selected' : 'desktop-icon-text'} px-1`}>
+                    <span
+                        className={`text-white text-center line-clamp-2 w-full max-w-[76px] ${isSelected ? 'desktop-icon-text-selected' : 'desktop-icon-text'} px-1`}
+                        style={{ fontSize: '0.7rem' }}
+                    >
                         {iconInfo.title}
                     </span>
                 </div>

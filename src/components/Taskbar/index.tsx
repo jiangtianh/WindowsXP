@@ -8,7 +8,7 @@ export const TASKBAR_HEIGHT = 32; // px
 const Taskbar: React.FC = () => {
 
     return (
-        <div className="taskbar absolute bottom-0 w-full flex items-center z-10000"
+        <div className="taskbar absolute bottom-0 w-full flex items-center justify-between z-10000 overflow-hidden"
             style={{ height: `${TASKBAR_HEIGHT}px` }}
         >
             <TaskbarLeft />

@@ -26,11 +26,12 @@ const TaskbarWindowButton: React.FC<TaskbarWindowButtonProps> = ({ windowKey }) 
     return (
         <div
             onClick={handleClick}
-            className="flex items-center h-full gap-1 py-1 mt-px sm:w-44 w-10 cursor-pointer select-none flex-shrink"
+            style={{ flex: '0 1 160px' }}
+            className="flex items-center h-full gap-1 py-1 mt-px cursor-pointer select-none min-w-[32px] max-w-[160px]"
         >
-            <div className={`flex items-center px-2 w-full h-full hover:brightness-110 rounded-xs taskbar-window-button${isActive ? "-active" : ""}`}>
-                <img src={currentWindow.icon} alt={currentWindow.title} className="h-4 w-4" />
-                <span className="truncate text-white hidden sm:block ml-1">{currentWindow.title}</span>
+            <div className={`flex items-center px-2 w-full h-full hover:brightness-110 rounded-sm taskbar-window-button${isActive ? "-active" : ""}`}>
+                <img src={currentWindow.icon} alt={currentWindow.title} className="h-4 w-4 flex-shrink-0" />
+                <span className="truncate text-white ml-1">{currentWindow.title}</span>
             </div>
         </div>
     )

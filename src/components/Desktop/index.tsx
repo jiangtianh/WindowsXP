@@ -16,6 +16,7 @@ import Jsdos from "../Applications/jsdos";
 import Pinball from "../Applications/Pinball";
 import VirtualRei from "../Applications/VirtualRei";
 import Solitaire from "../Applications/Solitaire";
+import SystemProperties from "../Applications/SystemProperties";
 
 const Desktop: React.FC = () => {
     const dispatch = useDispatch();
@@ -54,6 +55,8 @@ const Desktop: React.FC = () => {
                 <Pinball />
                 <VirtualRei />
                 <Solitaire />
+
+                <SystemProperties />
 
 
 

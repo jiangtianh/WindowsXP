@@ -5,8 +5,8 @@ import { updateGridDimensions } from "../../services/Windows/desktopIconSlice";
 import DesktopIcon from "./DesktopIcon";
 import type { WindowKey } from "../../services/types";
 
-export const GRID_WIDTH = 80;
-export const GRID_HEIGHT = 80;
+export const GRID_WIDTH = 90;
+export const GRID_HEIGHT = 90;
 
 
 const DesktopIcons: React.FC = () => {

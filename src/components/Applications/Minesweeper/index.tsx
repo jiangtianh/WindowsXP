@@ -7,7 +7,7 @@ const Minesweeper: React.FC = () => {
     const windowKey: WindowKey = "Minesweeper";
 
     return (
-        <WindowWrapper windowKey={windowKey} minWidth={205} minHeight={305} disableMaximize={true} enableResizing={false}>
+        <WindowWrapper windowKey={windowKey} minWidth={205} minHeight={305} enableResizing={false} hideMaximize={true}>
             <MinesweeperContent />
         </WindowWrapper>
     );

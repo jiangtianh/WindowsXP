@@ -14,11 +14,15 @@ interface WindowWrapperProps {
     minHeight?: number;
     maxWidth?: number;
     maxHeight?: number;
-    disableMaximize?: boolean;
     enableResizing?: boolean;
+    hideMinimize?: boolean;
+    hideMaximize?: boolean;
+    showHelp?: boolean;
 }
 
-const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children, minWidth, minHeight, maxWidth, maxHeight, disableMaximize, enableResizing }) => {
+const WindowWrapper: React.FC<WindowWrapperProps> = ({
+    windowKey, children, minWidth, minHeight, maxWidth, maxHeight, enableResizing, hideMaximize, hideMinimize, showHelp
+}) => {
 
     const dispatch = useDispatch();
     const windowState = useSelector((state: RootState) => state.windows.windows[windowKey]);
@@ -150,15 +154,22 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({ windowKey, children, minW
                         <img src={windowState.icon} alt={windowName} className="w-4 h-4 inline-block mr-1" />
                         {windowName}
                     </div>
+
                     <div className="title-bar-controls">
-                        <button aria-label="Minimize" className="cursor-pointer" onClick={handleMinimize}></button>
-                        <button
-                            aria-label={windowState.isMaximized ? "Restore" : "Maximize"}
-                            className={`cursor-pointer ${disableMaximize ? 'maximize-disabled' : ''}`}
-                            onClick={handleMaximize}
-                            disabled={disableMaximize}
-                        >
-                        </button>
+                        {!hideMinimize && (
+                            <button aria-label="Minimize" className="cursor-pointer" onClick={handleMinimize}></button>
+                        )}
+                        {!hideMaximize && (
+                            <button
+                                aria-label={windowState.isMaximized ? "Restore" : "Maximize"}
+                                className="cursor-pointer"
+                                onClick={handleMaximize}
+                            >
+                            </button>
+                        )}
+                        {showHelp && (
+                            <button aria-label="Help" className="cursor-pointer"></button>
+                        )}
                         <button aria-label="Close" className="cursor-pointer" onClick={handleClose}></button>
                     </div>
                 </div>

@@ -8,6 +8,8 @@ import MinesweeperIcon from "@assets/icons/Minesweeper128x128.webp";
 import PinballIcon from "@assets/icons/Pinball128x128.webp";
 import GameControllerIcon from "@assets/icons/GameController128x128.webp";
 import ReiIcon from "@assets/icons/Rei128x128.webp";
+import SolitaireIcon from "@assets/icons/Solitaire128x128.webp";
+import SystemPropertiesIcon from "@assets/icons/SystemProperties128x128.webp";
 
 export const initialWindowState: Record<WindowKey, WindowState> = {
     'Notepad': {
@@ -81,13 +83,23 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         icon: ReiIcon,
     },
     'Solitaire': {
-        isOpen: true,
+        isOpen: false,
         isFocused: false,
         isMaximized: false,
         isMinimized: false,
         position: { x: 20, y: 20, width: 650, height: 600 },
         savedPosition: null,
         title: 'Solitaire',
-        icon: NotepadIcon, // Placeholder icon, replace with actual Solitaire icon
+        icon: SolitaireIcon,
+    },
+    'SystemProperties': {
+        isOpen: false,
+        isFocused: false,
+        isMaximized: false,
+        isMinimized: false,
+        position: { x: 100, y: 100, width: 400, height: 300 },
+        savedPosition: null,
+        title: 'System Properties',
+        icon: SystemPropertiesIcon,
     }
 }
