@@ -45,7 +45,7 @@ const getCardBackground = (card: Card) => {
 export const getDroppableBackground = () => {
     return {
         backgroundImage: `url(${cardSpirit})`,
-        backgroundPosition: `-504px -400px`,
+        backgroundPosition: `-144px -400px`,
         backgroundSize: '936px 500px', // 13 columns, 5 rows
         width: `${CARD_BACKGROUND_WIDTH}px`,
         height: `${CARD_BACKGROUND_HEIGHT}px`,
@@ -101,9 +101,9 @@ const SolitaireCard: React.FC<SolitaireCardProps> = ({
         let baseZ = 0;
         switch (pileType) {
             case 'deck': baseZ = 100; break;
-            case 'waste': baseZ = 200; break;
-            case 'foundation': baseZ = 300 + pileIndex; break;
-            case 'tableau': baseZ = 400 + pileIndex; break;
+            case 'waste': baseZ = 100; break;
+            case 'foundation': baseZ = 100 + pileIndex; break;
+            case 'tableau': baseZ = 100 + pileIndex; break;
         }
         return baseZ + cardIndex + (isBeingDragged ? 1000 : 0);
     };

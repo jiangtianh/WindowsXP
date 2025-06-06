@@ -335,6 +335,7 @@ const SolitaireContent: React.FC = () => {
                                 cardIndex={cardIndex}
                                 isDraggable={cardIndex === pile.length - 1} // Only the top card is draggable
                                 onDragStart={() => handleDragStart('foundation', pileIndex, cardIndex)}
+                                isBeingDragged={dragSource?.type === 'foundation' && dragSource.pileIndex === pileIndex && dragSource.cardIndex === cardIndex}
                                 onDrag={(deltaX, deltaY) => handleDrag(deltaX, deltaY)}
                                 onDragEnd={(_x, _y, event) => handleDragEnd(event)}
                             />
