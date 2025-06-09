@@ -5,7 +5,7 @@ import SystemPropertiesContent from "./SystemPropertiesContent";
 const SystemProperties: React.FC = () => {
     const windowKey: WindowKey = "SystemProperties";
     return (
-        <WindowWrapper windowKey={windowKey}>
+        <WindowWrapper windowKey={windowKey} showHelp={true} hideMinimize={true} hideMaximize={true} enableResizing={false}>
             <SystemPropertiesContent />
         </WindowWrapper>
     )

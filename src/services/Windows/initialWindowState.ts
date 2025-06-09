@@ -97,7 +97,7 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         isFocused: false,
         isMaximized: false,
         isMinimized: false,
-        position: { x: 100, y: 100, width: 400, height: 300 },
+        position: { x: 100, y: 100, width: 345, height: 400 },
         savedPosition: null,
         title: 'System Properties',
         icon: SystemPropertiesIcon,

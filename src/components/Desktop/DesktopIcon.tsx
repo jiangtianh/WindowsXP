@@ -8,7 +8,6 @@ import type { WindowKey } from "../../services/types";
 import type { DesktopIconInfo } from "../../services/types";
 import { moveIcon } from "../../services/Windows/desktopIconSlice";
 import { openWindow } from "../../services/Windows/windowsSlice";
-import { GRID_HEIGHT, GRID_WIDTH } from "./DesktopIcons";
 
 import "./DesktopIcon.css";
 

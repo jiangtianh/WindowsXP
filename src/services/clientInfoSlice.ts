@@ -64,7 +64,7 @@ export const clientInfoSlice = createSlice({
                 return { ...state, loading: true };
             })
             .addCase(getSystemInfo.fulfilled, (state, action) => {
-                return { ...state, ...action.payload };
+                return { ...state, ...action.payload, loading: false };
             })
             .addCase(getSystemInfo.rejected, (state) => {
                 return { ...state, loading: false, fetched: true };
