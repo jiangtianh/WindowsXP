@@ -1,13 +1,5 @@
 import type { WindowKey, DesktopIconInfo } from "../types"
-import NotepadIcon from "@/assets/icons/Notepad128x128.webp";
-import ProjectIcon from "@/assets/icons/StartMenuPrograms128x128.webp";
-import CVIcon from "@/assets/icons/FaxSenderInformation128x128.webp";
-import MinesweeperIcon from "@assets/icons/Minesweeper128x128.webp";
-import PinballIcon from "@assets/icons/Pinball128x128.webp";
-import GameControllerIcon from "@assets/icons/GameController128x128.webp";
-import ReiIcon from "@/assets/icons/Rei128x128.webp";
-import SolitaireIncon from "@assets/icons/Solitaire128x128.webp";
-import SystemPropertiesIcon from "@assets/icons/SystemProperties128x128.webp";
+import { NotepadIcon, ProjectIcon, CVIcon, MinesweeperIcon, PinballIcon, GameControllerIcon, ReiIcon, SolitaireIcon, SystemPropertiesIcon } from "./initialWindowState";
 
 export const initialDesktopIconState: Record<WindowKey, DesktopIconInfo> = {
     'Projects': {
@@ -47,7 +39,7 @@ export const initialDesktopIconState: Record<WindowKey, DesktopIconInfo> = {
     },
     'Solitaire': {
         title: 'Solitaire',
-        icon: SolitaireIncon,
+        icon: SolitaireIcon,
         coordinates: { gridX: 1, gridY: 2 },
     },
     'SystemProperties': {

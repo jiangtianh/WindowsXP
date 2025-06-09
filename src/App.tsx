@@ -6,7 +6,7 @@ function App() {
 
 
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex flex-col h-screen w-screen overflow-hidden">
       <BootController />
     </div>
   )

@@ -4,11 +4,6 @@ import { selectMuted } from '../../services/volumeSlice';
 
 import VolumeControllerModal from './VolumeControllerModal';
 
-import volumeIcon from '@assets/icons/Volume32x32.webp';
-import volumeMuteIcon from '@assets/icons/Mute32x32.webp';
-import fullscreenIcon from '@assets/icons/FullScreen32x32.webp';
-
-
 
 const SystemTray = () => {
 
@@ -25,7 +20,7 @@ const SystemTray = () => {
     const [showVolumeController, setShowVolumeController] = useState(false);
 
     const isMuted = useSelector(selectMuted);
-    const volumeControlIcon = isMuted ? volumeMuteIcon : volumeIcon;
+    const volumeControlIconSrc = isMuted ? '/icons/Mute32x32.webp' : '/icons/Volume32x32.webp';
 
     const enterFullScreen = () => {
         if (isFullscreen) {
@@ -71,14 +66,14 @@ const SystemTray = () => {
     return (
         <div className="system-tray text-white h-full flex items-center px-1.5 sm:px-3 gap-1 select-none font-family-trebuchet">
 
-            <img src={fullscreenIcon}
+            <img src='/icons/FullScreen32x32.webp'
                 alt="Fullscreen"
                 className="w-4 h-4 cursor-pointer"
                 onClick={enterFullScreen}
             />
 
 
-            <img src={volumeControlIcon}
+            <img src={volumeControlIconSrc}
                 alt="Volume"
                 className="w-4 h-4 cursor-pointer"
                 onClick={() => setShowVolumeController(true)}

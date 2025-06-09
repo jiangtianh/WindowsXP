@@ -1,9 +1,7 @@
 import { useDispatch } from "react-redux";
 import { setBootPhase, BootPhase } from "../../services/bootStatusSlice";
 
-import powerIcon from "@assets/icons/Power64x64.webp";
 import xpBootLogoWhite from "@assets/xp-boot-logo-white.svg";
-import userIcon from "@assets/icons/user-icon.webp";
 import "./LoginPage.css";
 
 const LoginPage: React.FC = () => {
@@ -55,7 +53,7 @@ const LoginPage: React.FC = () => {
                                         onClick={handleLogin}
                                     >
                                         <div className="login-user-icon me-5 rounded-lg">
-                                            <img src={userIcon} alt="User Icon" className="w-full h-full rounded-lg" />
+                                            <img src='/img/icons/user-icon.webp' alt="User Icon" className="w-full h-full rounded-lg" />
                                         </div>
                                         <div className="text-white text-2xl font-family-trebuchet">
                                             Jiangtian Han
@@ -74,7 +72,7 @@ const LoginPage: React.FC = () => {
                 <div className="absolute login-header-background w-full md:h-36 h-1/6 bottom-0 login-bottom-header-border-top flex justify-center items-center">
                     <div className="w-9/10 flex justify-between items-center pb-3 md:pb-6">
                         <div className="flex items-center login-turn-off-button cursor-pointer" onClick={turnOff}>
-                            <img src={powerIcon} alt="Shutdown Icon" className="w-8 h-8 me-2" />
+                            <img src='/img/icons/Power64x64.webp' alt="Shutdown Icon" className="w-8 h-8 me-2" />
                             <span className="text-white text-2xl font-family-trebuchet">Turn off computer</span>
                         </div>
                         <div className="text-white font-family-pixelated-ms-sans-serif md:w-2/6 w-3/6 text-base">

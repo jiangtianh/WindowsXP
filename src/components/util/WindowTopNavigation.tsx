@@ -5,14 +5,14 @@ import type { WindowKey } from "../../services/types";
 
 
 import "./WindowTopNavigation.css";
-import BackIcon from "@assets/icons/Back64x64.webp";
-import ForwardIcon from "@assets/icons/Forward64x64.webp";
-import FolderUpIcon from "@assets/icons/Up64x64.webp";
-import SearchIcon from "@assets/icons/Search64x64.webp";
-import FolderViewIcon from "@assets/icons/FolderView64x64.webp";
-import IconViewIcon from "@assets/icons/IconView64x64.webp";
-import GoIcon from "@assets/icons/Go32x32.webp";
-import DropdownArrowIcon from "@assets/icons/DropdownArrow.webp";
+const BackIcon = "/icons/Back64x64.webp";
+const ForwardIcon = "/icons/Forward64x64.webp";
+const FolderUpIcon = "/icons/Up64x64.webp";
+const SearchIcon = "/icons/Search64x64.webp";
+const FolderViewIcon = "/icons/FolderView64x64.webp";
+const IconViewIcon = "/icons/IconView64x64.webp";
+const GoIcon = "/icons/Go32x32.webp";
+const DropdownArrowIcon = "/icons/DropdownArrow.webp";
 
 
 interface WindowTopNavigationProp {

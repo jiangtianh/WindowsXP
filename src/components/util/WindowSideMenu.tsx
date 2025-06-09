@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./WindowSideMenu.css";
 
-import PropertiesIcon from "@assets/icons/Properties32x32.webp";
-import ProgramsIcon from "@assets/icons/Programs32x32.webp";
-import ControlPanelIcon from "@assets/icons/ControlPanel32x32.webp";
-import MyNetworkPlacesIcon from "@assets/icons/MyNetworkPlaces32x32.webp";
-import MyDocumentsIcon from "@assets/icons/MyDocuments32x32.webp";
-import FolderClosedIcon from "@assets/icons/FolderClosed32x32.webp";
-import GithubIcon from "@assets/icons/Github32x32.webp";
+const PropertiesIcon = "/icons/Properties32x32.webp";
+const ProgramsIcon = "/icons/Programs32x32.webp";
+const ControlPanelIcon = "/icons/ControlPanel32x32.webp";
+const MyNetworkPlacesIcon = "/icons/MyNetworkPlaces32x32.webp";
+const MyDocumentsIcon = "/icons/MyDocuments32x32.webp";
+const FolderClosedIcon = "/icons/FolderClosed32x32.webp";
+const GithubIcon = "/icons/Github32x32.webp";
 
 interface MenuItem {
     icon: string;

@@ -1,15 +1,15 @@
 import type { WindowKey, WindowState } from "../types";
 
 
-import NotepadIcon from "@assets/icons/Notepad128x128.webp";
-import ProjectIcon from "@assets/icons/StartMenuPrograms128x128.webp";
-import CVIcon from "@assets/icons/FaxSenderInformation128x128.webp";
-import MinesweeperIcon from "@assets/icons/Minesweeper128x128.webp";
-import PinballIcon from "@assets/icons/Pinball128x128.webp";
-import GameControllerIcon from "@assets/icons/GameController128x128.webp";
-import ReiIcon from "@assets/icons/Rei128x128.webp";
-import SolitaireIcon from "@assets/icons/Solitaire128x128.webp";
-import SystemPropertiesIcon from "@assets/icons/SystemProperties128x128.webp";
+export const NotepadIcon = "/icons/Notepad128x128.webp";
+export const ProjectIcon = '/icons/StartMenuPrograms128x128.webp'
+export const CVIcon = "/icons/FaxSenderInformation128x128.webp";
+export const MinesweeperIcon = "/icons/Minesweeper128x128.webp";
+export const PinballIcon = "/icons/Pinball128x128.webp";
+export const GameControllerIcon = "/icons/GameController128x128.webp";
+export const ReiIcon = "/icons/Rei128x128.webp";
+export const SolitaireIcon = "/icons/Solitaire128x128.webp";
+export const SystemPropertiesIcon = "/icons/SystemProperties128x128.webp";
 
 export const initialWindowState: Record<WindowKey, WindowState> = {
     'Notepad': {
@@ -27,7 +27,7 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         isFocused: false,
         isMaximized: false,
         isMinimized: false,
-        position: { x: 150, y: 120, width: 750, height: 450 },
+        position: { x: 150, y: 120, width: 750, height: 550 },
         savedPosition: null,
         title: 'My Projects',
         icon: ProjectIcon,

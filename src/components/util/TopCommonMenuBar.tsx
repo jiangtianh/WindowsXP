@@ -1,5 +1,3 @@
-import windowsHeaderWindowIcon from "@assets/icons/XPlogo_32x32.webp";
-
 import "./TopCommonMenuBar.css";
 
 interface TopCommonMenuBarProps {
@@ -23,7 +21,7 @@ const TopCommonMenuBar: React.FC<TopCommonMenuBarProps> = (
 
             {showWindowsBadge && (
                 <div className="flex items-center menu-bar-border-bottom h-full w-10 justify-center bg-gray-100">
-                    <img src={windowsHeaderWindowIcon} alt="Windows XP" className="h-5 object-cover" />
+                    <img src='/icons/XPlogo_32x32.webp' alt="Windows XP" className="h-5 object-cover" />
                 </div>
             )}
 

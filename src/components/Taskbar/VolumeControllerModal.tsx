@@ -2,8 +2,6 @@ import { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setVolume, toggleMute, selectMuted, selectVolume } from '../../services/volumeSlice';
 
-import volumeIcon from '@assets/icons/Volume32x32.webp';
-
 interface VolumeControllerModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -42,7 +40,7 @@ const VolumeControllerModal: React.FC<VolumeControllerModalProps> = ({ isOpen, o
         <div className="window fixed bottom-10 right-5 md:right-9 w-24" ref={modalRef}>
             <div className="title-bar">
                 <div className="title-bar-text flex items-center gap-1">
-                    <img src={volumeIcon} alt="Volume" className="w-4 h-4" />
+                    <img src='/icons/Volume32x32.webp' alt="Volume" className="w-4 h-4" />
                     Control
                 </div>
             </div>

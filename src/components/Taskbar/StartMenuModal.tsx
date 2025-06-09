@@ -4,9 +4,7 @@ import { setBootPhase, BootPhase } from '../../services/bootStatusSlice';
 
 import { TASKBAR_HEIGHT } from '.';
 import './StartMenuModal.css';
-import userIcon from "@assets/icons/user-icon.webp";
-import powerIcon from "@assets/icons/Power64x64.webp";
-import logoutIcon from "@assets/icons/Logout64x64.webp";
+
 
 interface StartMenuModalProps {
     open: boolean;
@@ -37,7 +35,7 @@ const StartMenuModal: React.FC<StartMenuModalProps> = ({ open, onClose }) => {
         return () => document.removeEventListener('mousedown', handleClick);
     }, [open, onClose]);
 
-    if (!open) return null; // Uncomment this line if you want to conditionally render the modal based on `open` prop
+    if (!open) return null;
 
     const handleLogoff = () => {
         dispatch(setBootPhase(BootPhase.LOGIN));
@@ -49,11 +47,13 @@ const StartMenuModal: React.FC<StartMenuModalProps> = ({ open, onClose }) => {
     return (
         <div
             ref={modalRef}
-            className="absolute left-0 start-menu-modal overflow-hidden z-10000 flex flex-col select-none w-[320px] h-[450px] md:w-[430px] md:h-[530px]"
-            style={{ bottom: `${TASKBAR_HEIGHT}px` }}
+            className="fixed left-0 start-menu-modal overflow-hidden flex flex-col select-none w-[320px] h-[450px] md:w-[430px] md:h-[530px] z-10000"
+            style={{
+                bottom: `${TASKBAR_HEIGHT}px`
+            }}
         >
             <div className="start-menu-modal-header h-16 w-full flex flex-shrink-0 items-center px-2 gap-2">
-                <img src={userIcon} alt="User Icon" className="start-menu-modal-profile-shadow w-11 h-11 rounded-lg border-white border-1" />
+                <img src='/icons/user-icon.webp' alt="User Icon" className="start-menu-modal-profile-shadow w-11 h-11 rounded-lg border-white border-1" />
                 <p className="text-lg text-white start-menu-modal-text-shadow font-family-trebuchet">Jiangtian Han</p>
             </div>
 
@@ -75,19 +75,17 @@ const StartMenuModal: React.FC<StartMenuModalProps> = ({ open, onClose }) => {
                 <a className="cursor-pointer p-1 flex items-center gap-1 h-10 rounded-xs"
                     onClick={handleLogoff}
                 >
-                    <img src={logoutIcon} className="w-6 h-6 md:w-7 md:h-7" alt="Power Off" />
+                    <img src='/icons/Logout64x64.webp' className="w-6 h-6 md:w-7 md:h-7" alt="Power Off" />
                     <p className="text-white text-xxs">Log Off</p>
                 </a>
 
                 <a className="cursor-pointer p-1 flex items-center gap-1 h-10 rounded-xs"
                     onClick={handlePowerOff}
                 >
-                    <img src={powerIcon} className="w-6 h-6 md:w-7 md:h-7" alt="Power Off" />
+                    <img src='/icons/Power64x64.webp' className="w-6 h-6 md:w-7 md:h-7" alt="Power Off" />
                     <p className="text-white text-xxs">Turn Off Computer</p>
                 </a>
-
             </div>
-
         </div>
     );
 };

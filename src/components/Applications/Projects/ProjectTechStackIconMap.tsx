@@ -1,5 +1,5 @@
-import { FaGithub, FaReact, FaJava } from "react-icons/fa";
-import { SiTypescript, SiRedux, SiSpringboot, SiMongodb } from "react-icons/si";
+import { FaGithub, FaReact, FaJava, FaPython } from "react-icons/fa";
+import { SiTypescript, SiRedux, SiSpringboot, SiMongodb, SiOllama } from "react-icons/si";
 import { BsFiletypeScss } from "react-icons/bs";
 
 const DEFAULT_ICON_SIZE = 28;
@@ -17,7 +17,9 @@ export type IconName =
     | "springboot"
     | "java"
     | "mongodb"
-    | "github";
+    | "github"
+    | "ollama"
+    | "python";
 
 export const TechIcon: React.FC<{ name: IconName } & IconProps> = ({
     name,
@@ -42,6 +44,10 @@ export const TechIcon: React.FC<{ name: IconName } & IconProps> = ({
             return <SiMongodb {...iconProps} />;
         case "github":
             return <FaGithub {...iconProps} />;
+        case "ollama":
+            return <SiOllama {...iconProps} />;
+        case "python":
+            return <FaPython {...iconProps} />;
         default:
             return null;
     }

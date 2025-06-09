@@ -1,5 +1,5 @@
-import ProjectIcon from "@assets/icons/StartMenuPrograms128x128.webp";
-import DashdoorIcon from "@assets/icons/dashdoor.webp";
+const ProjectIcon = "/icons/StartMenuPrograms128x128.webp";
+const DashdoorIcon = "/icons/dashdoor.webp";
 
 import type { IconName } from "./ProjectTechStackIconMap";
 import { TechIcon } from "./ProjectTechStackIconMap";
@@ -29,7 +29,7 @@ interface ProjectFolderItem {
 
 export const renderProjectConetent = (content: ProjectContent) => {
     return (
-        <div className="py-2 px-2">
+        <div className="py-2 px-2 project-content">
             {content.title && content.dateTime && (
                 <div className="w-full gap-4 mb-3">
                     <div className="font-bold text-base mb-1">{content.title}</div>
@@ -126,7 +126,62 @@ export const projectsContentData: ProjectFolderItem = {
                 ),
                 repositoryLink: 'https://github.com/jiangtianh/5500-final-frontend'
             }
-
+        },
+        'slideSpeak': {
+            id: 'slideSpeak',
+            name: 'SlideSpeak',
+            type: 'file',
+            category: 'AI Projects',
+            icon: ProjectIcon,
+            content: {
+                title: 'SlideSpeak - AI Presentation Generator (Qualcomm Technologies x Northeastern University Hackathon)',
+                dateTime: '2025 March 15th - 16th',
+                techStack: [
+                    'ollama',
+                    'python'
+                ],
+                content: (
+                    <>
+                        <p className="mb-1 font-bold text-xs">SlideSpeak is a Python-based AI tool designed for:</p>
+                        <ul className="list-disc ml-3 mb-4 font-bold">
+                            <li>Converting text queries into PowerPoint presentations and speech transcripts.</li>
+                            <li>Converting speech transcripts into audio files per slide for presentation rehearsal.</li>
+                        </ul>
+                        <p className="mb-1 font-bold text-xs">Key Features:</p>
+                        <ul className="list-disc ml-3 mb-3">
+                            <li>An AI-powered tool that converts user input into PowerPoint slides and slide-specific audio using on-device LLMs (Qwen2.5-7B via Ollama) and local TTS engines (Kokoro ONNX / pyttsx3).</li>
+                            <li>Engineered both a Tkinter GUI and a CLI interface for flexible user interaction and batch processing.</li>
+                            <li>Integrated python-pptx to dynamically generate structured slide decks from model-generated content.</li>
+                            <li>Enabled edge device compatibility by supporting Qualcomm NPU execution through AnythingLLM APIs.</li>
+                            <li>Designed modular architecture for transcript generation, slide creation, and speech synthesis, supporting extensibility and offline use.</li>
+                        </ul>
+                        <p className="mb-1 font-bold text-xs">Tech Stack</p>
+                        <ul className="list-disc ml-3 mb-3">
+                            <li>Language: Python</li>
+                            <li>AI & LLMs: Ollama (running Qwen 2.5)</li>
+                            <li>TTS (Text-to-Speech): Kokoro TTS, pyttsx3 (for faster, lightweight TTS)</li>
+                            <li>Libraries & Tools: python-pptx (for generating PowerPoint slides)</li>
+                            <li>UI: Tkinter-based GUI, CLI</li>
+                        </ul>
+                        <p className="mb-1 font-bold text-xs">Features Showcase:</p>
+                        <div className="flex flex-col justify-center items-center mb-4">
+                            <div className="mb-4">
+                                <img src='https://raw.githubusercontent.com/zhangshi0512/SlideSpeak/main/screenshots/live_demo_npu-ezgif.com-speed.gif' />
+                                <p>*Text2PPT Live Demo Using NPU*</p>
+                            </div>
+                            <div className="mb-4">
+                                <img src='https://raw.githubusercontent.com/zhangshi0512/SlideSpeak/main/screenshots/live_demo_cpu-ezgif.com-speed.gif' />
+                                <p>*Text2PPT Live Demo Using CPU*</p>
+                            </div>
+                            <div className="mb-4">
+                                <img src='https://raw.githubusercontent.com/zhangshi0512/SlideSpeak/main/screenshots/live_demo_tts.gif' />
+                                <p>*Text2Audio Live Demo Using Pyttsx3*</p>
+                            </div>
+                        </div>
+                    </>
+                ),
+                repositoryLink: 'https://github.com/zhangshi0512/SlideSpeak'
+            }
         },
         'skierResortApp': {
             id: 'skierResortApp',
@@ -144,5 +199,6 @@ export const projectsContentData: ProjectFolderItem = {
             icon: ProjectIcon,
             content: {}
         },
+
     }
 }
