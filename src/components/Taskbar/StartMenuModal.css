@@ -32,3 +32,9 @@
     background-color: #d3e5fb;
     border-left: 1px solid rgba(58, 58, 255, .37);
 }
+
+
+.start-menu-modal-component:hover {
+    background: #2d71cd;
+    color: white;
+}

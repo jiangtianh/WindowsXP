@@ -1,0 +1,23 @@
+.folder-button-active img {
+    filter: opacity(0.5);
+}
+
+.folder-button-active {
+    filter: drop-shadow(blue 0px 0px);
+}
+
+.folder-button-active .folder-button-text-container {
+    background-color: rgb(11, 97, 255);
+}
+
+.folder-button-active .folder-button-main-text {
+    color: white;
+}
+
+.folder-button-minor-text {
+    color: #93A3AF;
+}
+
+.folder-button-active .folder-button-minor-text {
+    color: #C0C0C0;
+}

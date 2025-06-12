@@ -15,3 +15,7 @@
 .desktop-icon-selected {
     filter: opacity(0.5);
 }
+
+.desktop-icon-active {
+    filter: drop-shadow(blue 0px 0px);
+}

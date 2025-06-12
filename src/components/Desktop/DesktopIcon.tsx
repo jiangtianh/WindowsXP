@@ -83,7 +83,7 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ windowKey, iconInfo, gridCell
         >
             <div
                 ref={nodeRef}
-                className="flex justify-center absolute"
+                className={`flex justify-center absolute ${isSelected ? 'desktop-icon-active' : ''}`}
                 style={{ left: 0, top: 0, width: gridCellSize.width, height: gridCellSize.height }}
             >
                 <div className="cursor-pointer flex flex-col items-center gap-0.5"
@@ -96,12 +96,16 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ windowKey, iconInfo, gridCell
                         className={`h-10 w-10 mb-1 ${isSelected ? 'desktop-icon-selected' : 'desktop-icon'}`}
                         draggable="false"
                     />
-                    <span
-                        className={`text-white text-center line-clamp-2 w-full max-w-[76px] ${isSelected ? 'desktop-icon-text-selected' : 'desktop-icon-text'} px-1`}
-                        style={{ fontSize: '0.7rem' }}
+                    <div
+                        className={`text-white text-center inline-block line-clamp-2 ${isSelected ? 'desktop-icon-text-selected' : 'desktop-icon-text'} px-1`}
+                        style={{
+                            fontSize: '0.7rem',
+                            width: 'auto',
+                            maxWidth: '76px',
+                        }}
                     >
                         {iconInfo.title}
-                    </span>
+                    </div>
                 </div>
             </div>
         </Draggable>

@@ -8,6 +8,10 @@ const MyNetworkPlacesIcon = "/icons/MyNetworkPlaces32x32.webp";
 const MyDocumentsIcon = "/icons/MyDocuments32x32.webp";
 const FolderClosedIcon = "/icons/FolderClosed32x32.webp";
 const GithubIcon = "/icons/Github32x32.webp";
+const MyComputerIcon = "/icons/MyComputer32x32.webp";
+const NewFolderIcon = "/icons/NewFolder32x32.webp";
+const PublishToWebIcon = "/icons/PublishToWeb32x32.webp";
+const SharedFolderIcon = "/icons/SharedFolder32x32.webp";
 
 interface MenuItem {
     icon: string;
@@ -19,7 +23,7 @@ interface SectionData {
     items: MenuItem[];
 };
 
-type ItemType = 'SystemTasks' | 'Other' | 'Details';
+type ItemType = 'SystemTasks' | 'Other' | 'Details' | 'FileAndFolderTasks' | 'OtherPlaces';
 interface WindowSideMenuProps {
     items?: ItemType[];
 }
@@ -29,7 +33,9 @@ const WindowSideMenu: React.FC<WindowSideMenuProps> = ({ items }) => {
     const [collapsedSections, setCollapsedSections] = useState<Record<ItemType, boolean>>({
         SystemTasks: false,
         Other: false,
-        Details: false
+        Details: false,
+        FileAndFolderTasks: false,
+        OtherPlaces: false
     });
 
     const toggleSection = (section: ItemType) => {
@@ -61,6 +67,24 @@ const WindowSideMenu: React.FC<WindowSideMenuProps> = ({ items }) => {
             title: "Details",
             items: [
                 { icon: GithubIcon, label: "My Github", onClick: () => { window.open('https://github.com/jiangtianh', '_blank') } },
+            ]
+        },
+        OtherPlaces: {
+            title: "Other Places",
+            items: [
+                { icon: FolderClosedIcon, label: "Documents and Settings" },
+                { icon: MyDocumentsIcon, label: "My Documents" },
+                { icon: FolderClosedIcon, label: "Shared Documents" },
+                { icon: MyComputerIcon, label: "My Computer" },
+                { icon: MyNetworkPlacesIcon, label: "My Network Places" },
+            ]
+        },
+        FileAndFolderTasks: {
+            title: "File and Folder Tasks",
+            items: [
+                { icon: NewFolderIcon, label: "Make a new folder" },
+                { icon: PublishToWebIcon, label: "Publish this folder to the web" },
+                { icon: SharedFolderIcon, label: "Share this folder" },
             ]
         }
     }

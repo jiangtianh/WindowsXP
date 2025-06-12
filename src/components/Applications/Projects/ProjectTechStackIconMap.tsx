@@ -1,6 +1,7 @@
-import { FaGithub, FaReact, FaJava, FaPython } from "react-icons/fa";
-import { SiTypescript, SiRedux, SiSpringboot, SiMongodb, SiOllama } from "react-icons/si";
+import { FaGithub, FaReact, FaJava, FaPython, FaAws, FaNodeJs } from "react-icons/fa";
+import { SiTypescript, SiRedux, SiSpringboot, SiMongodb, SiOllama, SiApachetomcat, SiRabbitmq, SiAmazonec2, SiApachejmeter, SiMysql, SiExpress } from "react-icons/si";
 import { BsFiletypeScss } from "react-icons/bs";
+import { DiRedis } from "react-icons/di";
 
 const DEFAULT_ICON_SIZE = 28;
 
@@ -19,7 +20,16 @@ export type IconName =
     | "mongodb"
     | "github"
     | "ollama"
-    | "python";
+    | "python"
+    | "tomcat"
+    | "redis"
+    | "aws"
+    | "rabbitmq"
+    | "amazonec2"
+    | "apachejmeter"
+    | "mysql"
+    | "nodejs"
+    | "express";
 
 export const TechIcon: React.FC<{ name: IconName } & IconProps> = ({
     name,
@@ -48,6 +58,24 @@ export const TechIcon: React.FC<{ name: IconName } & IconProps> = ({
             return <SiOllama {...iconProps} />;
         case "python":
             return <FaPython {...iconProps} />;
+        case "tomcat":
+            return <SiApachetomcat {...iconProps} />;
+        case "redis":
+            return <DiRedis {...iconProps} />;
+        case "aws":
+            return <FaAws {...iconProps} />;
+        case "rabbitmq":
+            return <SiRabbitmq {...iconProps} />;
+        case "amazonec2":
+            return <SiAmazonec2 {...iconProps} />;
+        case "apachejmeter":
+            return <SiApachejmeter {...iconProps} />;
+        case "mysql":
+            return <SiMysql {...iconProps} />;
+        case "nodejs":
+            return <FaNodeJs {...iconProps} />;
+        case "express":
+            return <SiExpress {...iconProps} />;
         default:
             return null;
     }

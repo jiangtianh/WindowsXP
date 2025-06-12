@@ -4,6 +4,7 @@ import type { WindowKey } from "../../../services/types";
 import TopCommonMenuBar from "../../util/TopCommonMenuBar";
 import WindowTopNavigation from "../../util/WindowTopNavigation";
 import WindowSideMenu from "../../util/WindowSideMenu";
+import FolderButton from "../../util/FolderButton";
 
 import { projectsContentData, renderProjectConetent } from "./ProjectsContentData";
 import "./ProjectContent.css";
@@ -96,30 +97,22 @@ const ProjectsContent: React.FC<ProjectsContentProps> = ({ windowKey }) => {
             if (current.showCategories) {
                 const grouped = groupItemsByCategory(current.children);
                 return (
-                    <div className="pt-1">
+                    <div className="pt-1 window-folder">
                         {/* Render categories */}
                         {Object.entries(grouped)
                             .filter(([category]) => category !== 'uncategorized')
                             .map(([category, items]) => (
                                 <div key={category} className="relative mb-3 select-none">
-                                    <span className="text-xs font-bold px-3">{category}</span>
+                                    <div className="text-xs font-bold px-3">{category}</div>
                                     <div className="w-80 h-px my-1 folder-category-divider"></div>
                                     <div className="flex flex-wrap gap-2 pb-3 w-full px-3">
                                         {items.map(item => (
-                                            <div
+                                            <FolderButton
                                                 key={item.id}
-                                                className="flex items-center w-52 px-3 py-2 cursor-pointer gap-2.5"
+                                                name={item.name}
+                                                icon={item.icon}
                                                 onDoubleClick={() => navigateTo(item.id, item.name)}
-                                            >
-                                                <img
-                                                    src={item.icon}
-                                                    alt={item.name}
-                                                    className="w-10 h-10 flex-shrink-0"
-                                                />
-                                                <div className="flex-1 min-w-0">
-                                                    <span className="text-xs line-clamp-2 overflow-hidden">{item.name}</span>
-                                                </div>
-                                            </div>
+                                            />
                                         ))}
                                     </div>
                                 </div>
@@ -129,24 +122,16 @@ const ProjectsContent: React.FC<ProjectsContentProps> = ({ windowKey }) => {
                         {/* Render uncategorized items first */}
                         {grouped.uncategorized.length > 0 && (
                             <div className="relative mb-3 select-none">
-                                <span className="text-xs font-bold px-3">Other</span>
+                                <div className="text-xs font-bold px-3">Other</div>
                                 <div className="w-80 h-px my-1 folder-category-divider"></div>
                                 <div className="flex flex-wrap gap-2 pb-3 w-full px-3">
                                     {grouped.uncategorized.map(item => (
-                                        <div
+                                        <FolderButton
                                             key={item.id}
-                                            className="flex items-center w-52 px-3 py-2 cursor-pointer gap-2.5"
+                                            name={item.name}
+                                            icon={item.icon}
                                             onDoubleClick={() => navigateTo(item.id, item.name)}
-                                        >
-                                            <img
-                                                src={item.icon}
-                                                alt={item.name}
-                                                className="w-10 h-10 flex-shrink-0"
-                                            />
-                                            <div className="flex-1 min-w-0">
-                                                <span className="text-xs line-clamp-2 overflow-hidden">{item.name}</span>
-                                            </div>
-                                        </div>
+                                        />
                                     ))}
                                 </div>
                             </div>
@@ -155,24 +140,16 @@ const ProjectsContent: React.FC<ProjectsContentProps> = ({ windowKey }) => {
                 );
             } else {
                 return (
-                    <div>
+                    <div className="window-folder">
                         <div className="relative mb-3 select-none">
                             <div className="flex flex-wrap gap-2 pb-3 w-full px-3">
-                                {Object.entries(current.children).map(([id, item]) => (
-                                    <div
-                                        key={id}
-                                        className="flex items-center w-52 px-3 py-2 cursor-pointer gap-2.5"
-                                        onDoubleClick={() => navigateTo(id, item.name)}
-                                    >
-                                        <img
-                                            src={item.icon}
-                                            alt={item.name}
-                                            className="w-10 h-10 flex-shrink-0"
-                                        />
-                                        <div className="flex-1 min-w-0">
-                                            <span className="text-xs line-clamp-2 overflow-hidden">{item.name}</span>
-                                        </div>
-                                    </div>
+                                {Object.entries(current.children).map(([_id, item]) => (
+                                    <FolderButton
+                                        key={item.id}
+                                        name={item.name}
+                                        icon={item.icon}
+                                        onDoubleClick={() => navigateTo(item.id, item.name)}
+                                    />
                                 ))}
                             </div>
                         </div>
@@ -203,8 +180,7 @@ const ProjectsContent: React.FC<ProjectsContentProps> = ({ windowKey }) => {
                     <WindowSideMenu items={['SystemTasks', 'Other', 'Details']} />
                 </div>
 
-                {/* PlaceHolder  */}
-                <div className="flex-1 overflow-auto h-full bg-white flex-col w-full font-family-tahoma">
+                <div className="flex-1 overflow-x-hidden over h-full bg-white flex-col w-full font-family-tahoma">
                     {renderContent()}
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import type { WindowKey, DesktopIconInfo } from "../types"
 import { NotepadIcon, ProjectIcon, CVIcon, MinesweeperIcon, PinballIcon, GameControllerIcon, ReiIcon, SolitaireIcon, SystemPropertiesIcon } from "./initialWindowState";
 
-export const initialDesktopIconState: Record<WindowKey, DesktopIconInfo> = {
+export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>> = {
     'Projects': {
         title: 'My Projects',
         icon: ProjectIcon,
