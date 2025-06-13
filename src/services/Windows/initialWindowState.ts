@@ -11,6 +11,7 @@ export const ReiIcon = "/icons/Rei128x128.webp";
 export const SolitaireIcon = "/icons/Solitaire128x128.webp";
 export const SystemPropertiesIcon = "/icons/SystemProperties128x128.webp";
 export const MyDocumentsIcon = "/icons/MyDocuments128x128.webp";
+export const ContactMeIcon = "/icons/OutlookExpress128x128.webp";
 
 export const initialWindowState: Record<WindowKey, WindowState> = {
     'Notepad': {
@@ -112,5 +113,15 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         savedPosition: null,
         title: 'My Documents',
         icon: MyDocumentsIcon,
+    },
+    'ContactMe': {
+        isOpen: false,
+        isFocused: false,
+        isMaximized: false,
+        isMinimized: false,
+        position: { x: 100, y: 100, width: 600, height: 400 },
+        savedPosition: null,
+        title: 'Contact Me',
+        icon: ContactMeIcon,
     }
 }

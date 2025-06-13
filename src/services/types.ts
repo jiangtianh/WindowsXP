@@ -1,4 +1,4 @@
-export type WindowKey = 'Notepad' | 'Projects' | 'CV' | 'Minesweeper' | 'jsdos' | 'Pinball' | 'VirtualRei' | 'Solitaire' | 'SystemProperties' | 'MyDocuments';
+export type WindowKey = 'Notepad' | 'Projects' | 'CV' | 'Minesweeper' | 'jsdos' | 'Pinball' | 'VirtualRei' | 'Solitaire' | 'SystemProperties' | 'MyDocuments' | 'ContactMe';
 
 export interface WindowPosition {
     x: number;

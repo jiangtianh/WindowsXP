@@ -18,6 +18,7 @@ import VirtualRei from "../Applications/VirtualRei";
 import Solitaire from "../Applications/Solitaire";
 import SystemProperties from "../Applications/SystemProperties";
 import MyDocuments from "../Applications/MyDocuments";
+import ContactMe from "../Applications/ContactMe";
 
 const Desktop: React.FC = () => {
     const dispatch = useDispatch();
@@ -60,7 +61,7 @@ const Desktop: React.FC = () => {
                 <SystemProperties />
 
                 <MyDocuments />
-
+                <ContactMe />
 
             </div>
             <Taskbar />

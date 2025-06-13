@@ -1,5 +1,5 @@
 import type { WindowKey, DesktopIconInfo } from "../types"
-import { NotepadIcon, ProjectIcon, CVIcon, MinesweeperIcon, PinballIcon, GameControllerIcon, ReiIcon, SolitaireIcon, SystemPropertiesIcon } from "./initialWindowState";
+import { NotepadIcon, ProjectIcon, CVIcon, MinesweeperIcon, PinballIcon, GameControllerIcon, ReiIcon, SolitaireIcon, SystemPropertiesIcon, ContactMeIcon } from "./initialWindowState";
 
 export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>> = {
     'Projects': {
@@ -46,5 +46,10 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
         title: 'System Properties',
         icon: SystemPropertiesIcon,
         coordinates: { gridX: 0, gridY: 0 },
+    },
+    'ContactMe': {
+        title: 'Contact Me',
+        icon: ContactMeIcon,
+        coordinates: { gridX: 1, gridY: 3 },
     }
 }
