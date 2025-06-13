@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { selectVolume } from "../../../services/volumeSlice";
-import "./jsDosContent.css";
+import "./jsdosContent.css";
 
 // Add global type declaration
 declare global {
