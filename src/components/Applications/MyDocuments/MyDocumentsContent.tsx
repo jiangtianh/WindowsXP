@@ -70,7 +70,9 @@ const MyDocumentsContent: React.FC<MyDocumentsProps> = ({ windowKey }) => {
             </div>
         ),
         'about': (
-            <>ABOUT</>
+            <div className="p-2">
+
+            </div>
         ),
         'credit': (
             <>CREDIT</>
