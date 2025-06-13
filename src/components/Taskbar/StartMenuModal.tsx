@@ -6,7 +6,7 @@ import { openWindow } from '../../services/Windows/windowsSlice';
 import { TASKBAR_HEIGHT } from '.';
 import './StartMenuModal.css';
 import type { WindowKey } from '../../services/types';
-import { NotepadIcon, MinesweeperIcon, SolitaireIcon, ProjectIcon, CVIcon, MyDocumentsIcon } from '../../services/Windows/initialWindowState';
+import { NotepadIcon, MinesweeperIcon, SolitaireIcon, ProjectIcon, CVIcon, MyDocumentsIcon, ContactMeIcon } from '../../services/Windows/initialWindowState';
 
 type StartMenuModalContent = {
     id: WindowKey;
@@ -22,6 +22,12 @@ const leftSideContent: StartMenuModalContent[] = [
         title: "My Projects",
         icon: ProjectIcon,
         description: "View my projects"
+    },
+    {
+        id: 'ContactMe',
+        title: "Contact Me",
+        icon: ContactMeIcon,
+        description: "Get in touch with me"
     },
     {
         id: 'CV',
