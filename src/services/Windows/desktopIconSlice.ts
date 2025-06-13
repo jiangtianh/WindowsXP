@@ -29,7 +29,7 @@ export const desktopIconSlice = createSlice({
                 icon.coordinates.gridY === safeY
             );
 
-            if (!isPositionTaken) {
+            if (!isPositionTaken && state.desktopIcons[windowKey]) {
                 state.desktopIcons[windowKey].coordinates = { gridX: safeX, gridY: safeY };
             }
             // If position is taken, don't update
