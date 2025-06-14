@@ -61,9 +61,11 @@ const MyDocumentsContent: React.FC<MyDocumentsProps> = ({ windowKey }) => {
                             onDoubleClick={() => navigateTo('about', 'About')}
                         />
                         <FolderButton
-                            name="Credit"
+                            name="Built With"
                             icon={TxtIcon}
-                            onDoubleClick={() => navigateTo('credit', 'Credit')}
+                            onDoubleClick={() => navigateTo('builtWith', 'Built With')}
+                            description="Text Document"
+                            fileSize="2 KB"
                         />
                     </div>
                 </div>
@@ -71,11 +73,28 @@ const MyDocumentsContent: React.FC<MyDocumentsProps> = ({ windowKey }) => {
         ),
         'about': (
             <div className="p-2">
-
+                <div className="text-base font-bold">About this project</div>
+                <hr className="my-2" />
+                <div className="flex flex-col gap-1.5 text-xs my-2">
+                    <p>This site is a tribute to my earliest memories of using a computer.</p>
+                    <p>The idea was to recreate the Windows XP interface using modern web technologies, offering visitors a different—and hopefully fun—way to explore my personal site.</p>
+                    <p>It's an ongoing project that I started in May 2025, designed to be as faithful to the original XP experience as possible.</p>
+                    <p>Built with React, Redux, and Tailwind CSS, it combines nostalgia with technical creativity.</p>
+                    <p>It's been made with a lot of love and patience—I hope you enjoy browsing through it. Thanks for stopping by!</p>
+                </div>
             </div>
         ),
-        'credit': (
-            <>CREDIT</>
+        'builtWith': (
+            <div className="p-2">
+                <div className="text-base font-bold">System Info</div>
+                <hr className="my-2" />
+                <div className="flex flex-col gap-1.5 text-xs my-2">
+                    <p><span className="font-semibold">Frameworks & Libraries:</span> React, Redux, Tailwind CSS, <code>react-rnd</code> (for draggable/resizable windows), and <code>xp.css</code> for authentic XP styling.</p>
+                    <p><span className="font-semibold">Games: </span><code>JS-DOS</code>, and the Pinball game is adapted from <a href="https://alula.github.io/3d-pinball-space-cadet/" target="_blank" rel="noopener noreferrer" className="underline">alula.github.io</a>.</p>
+                    <p><span className="font-semibold">Other Tools:</span> <code>emailjs</code> for email functionality.</p>
+                    <p><span className="font-semibold">Assets:</span> Icons and media are sourced from the Internet Archive and March Mountain.</p>
+                </div>
+            </div>
         )
     };
 

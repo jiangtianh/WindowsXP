@@ -25,12 +25,12 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
     'jsdos': {
         title: 'Jsdos',
         icon: GameControllerIcon,
-        coordinates: { gridX: 1, gridY: 0 },
+        coordinates: { gridX: 1, gridY: 1 },
     },
     'Pinball': {
         title: 'Pinball',
         icon: PinballIcon,
-        coordinates: { gridX: 1, gridY: 1 },
+        coordinates: { gridX: 1, gridY: 2 },
     },
     'VirtualRei': {
         title: 'Rei Ayanami',
@@ -40,7 +40,7 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
     'Solitaire': {
         title: 'Solitaire',
         icon: SolitaireIcon,
-        coordinates: { gridX: 1, gridY: 2 },
+        coordinates: { gridX: 1, gridY: 3 },
     },
     'SystemProperties': {
         title: 'System Properties',
@@ -50,6 +50,6 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
     'ContactMe': {
         title: 'Contact Me',
         icon: ContactMeIcon,
-        coordinates: { gridX: 1, gridY: 3 },
+        coordinates: { gridX: 1, gridY: 0 },
     }
 }
