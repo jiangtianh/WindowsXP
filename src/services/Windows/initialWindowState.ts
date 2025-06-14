@@ -79,7 +79,12 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         isFocused: false,
         isMaximized: false, // Not used
         isMinimized: false, // Not used
-        position: { x: 0, y: 0, width: 0, height: 0 }, // Not used
+        position: {
+            x: 0,
+            y: 0,
+            width: 0, // Not used
+            height: 0 // Not used
+        },
         savedPosition: null, // Not used
         title: 'Rei Ayanami',
         icon: ReiIcon,

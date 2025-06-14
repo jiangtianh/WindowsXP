@@ -38,6 +38,7 @@ const Desktop: React.FC = () => {
     return (
         <>
             <div
+                id="desktop"
                 className="xp-background w-full relative overflow-hidden"
                 onClick={handleBackgroundClick}
                 style={{
