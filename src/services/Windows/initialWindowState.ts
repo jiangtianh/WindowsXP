@@ -128,5 +128,15 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         savedPosition: null,
         title: 'Contact Me',
         icon: ContactMeIcon,
+    },
+    'Winamp': {
+        isOpen: false,
+        isFocused: false,
+        isMaximized: false,
+        isMinimized: false,
+        position: { x: 100, y: 100, width: 0, height: 0 }, // width and height not used
+        savedPosition: null,
+        title: 'Winamp',
+        icon: MinesweeperIcon, // Placeholder icon, replace with actual Winamp icon
     }
 }

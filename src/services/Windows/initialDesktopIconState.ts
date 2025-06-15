@@ -51,5 +51,10 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
         title: 'Contact Me',
         icon: ContactMeIcon,
         coordinates: { gridX: 1, gridY: 0 },
+    },
+    'Winamp': {
+        title: 'Winamp',
+        icon: MinesweeperIcon, // Placeholder icon, replace with actual Winamp icon
+        coordinates: { gridX: 1, gridY: 4 },
     }
 }

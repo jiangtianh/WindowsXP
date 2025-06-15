@@ -19,6 +19,7 @@ import Solitaire from "../Applications/Solitaire";
 import SystemProperties from "../Applications/SystemProperties";
 import MyDocuments from "../Applications/MyDocuments";
 import ContactMe from "../Applications/ContactMe";
+import WinampPlayer from "../Applications/Winamp";
 
 const Desktop: React.FC = () => {
     const dispatch = useDispatch();
@@ -33,18 +34,19 @@ const Desktop: React.FC = () => {
 
     const handleBackgroundClick = () => {
         dispatch(unfocusAllWindows())
-    }
+    };
 
     return (
-        <>
+        <div id="desktop-container">
             <div
                 id="desktop"
-                className="xp-background w-full relative overflow-hidden"
+                className="xp-background relative"
                 onClick={handleBackgroundClick}
                 style={{
                     height: `calc(100vh - ${TASKBAR_HEIGHT}px)`,
                 }}
             >
+
                 <DesktopIcons />
 
 
@@ -63,10 +65,11 @@ const Desktop: React.FC = () => {
 
                 <MyDocuments />
                 <ContactMe />
+                <WinampPlayer />
 
             </div>
             <Taskbar />
-        </>
+        </div>
     )
 };
 export default Desktop;

@@ -9,6 +9,7 @@ body {
   min-height: 100vh;
   display: flex; /* This will make the body a flex container */
   flex-direction: column; /* Stack children vertically */
+  overflow: hidden; /* Prevent scrolling */
 }
 
 #root {
@@ -16,3 +17,4 @@ body {
   display: flex;
   flex-direction: column;
 }
+
