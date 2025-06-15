@@ -45,11 +45,8 @@ const WinampPlayer = () => {
                         '#main-window, #playlist-window , #equalizer-window'
                     );
                     if (webampElements.length > 0) {
-                        console.log('Webamp elements found:', webampElements);
                         const handleWebampClick = () => {
-
                             dispatch(focusWindow(windowKey));
-
                         };
                         webampElements.forEach((element) => {
                             element.addEventListener('mousedown', handleWebampClick);

@@ -1,5 +1,5 @@
 import type { WindowKey, DesktopIconInfo } from "../types"
-import { NotepadIcon, ProjectIcon, CVIcon, MinesweeperIcon, PinballIcon, GameControllerIcon, ReiIcon, SolitaireIcon, SystemPropertiesIcon, ContactMeIcon } from "./initialWindowState";
+import { NotepadIcon, ProjectIcon, CVIcon, MinesweeperIcon, PinballIcon, GameControllerIcon, ReiIcon, SolitaireIcon, SystemPropertiesIcon, ContactMeIcon, WinampIcon } from "./initialWindowState";
 
 export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>> = {
     'Projects': {
@@ -10,7 +10,7 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
     'Notepad': {
         title: 'Notepad',
         icon: NotepadIcon,
-        coordinates: { gridX: 0, gridY: 3 },
+        coordinates: { gridX: 0, gridY: 4 },
     },
     'CV': {
         title: 'My CV',
@@ -20,7 +20,7 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
     "Minesweeper": {
         title: 'Minesweeper',
         icon: MinesweeperIcon,
-        coordinates: { gridX: 0, gridY: 4 },
+        coordinates: { gridX: 0, gridY: 5 },
     },
     'jsdos': {
         title: 'Jsdos',
@@ -35,7 +35,7 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
     'VirtualRei': {
         title: 'Rei Ayanami',
         icon: ReiIcon,
-        coordinates: { gridX: 0, gridY: 5 },
+        coordinates: { gridX: 0, gridY: 6 },
     },
     'Solitaire': {
         title: 'Solitaire',
@@ -54,7 +54,7 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
     },
     'Winamp': {
         title: 'Winamp',
-        icon: MinesweeperIcon, // Placeholder icon, replace with actual Winamp icon
-        coordinates: { gridX: 1, gridY: 4 },
+        icon: WinampIcon,
+        coordinates: { gridX: 0, gridY: 3 },
     }
 }

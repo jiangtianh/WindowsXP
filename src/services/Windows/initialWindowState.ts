@@ -12,6 +12,7 @@ export const SolitaireIcon = "/icons/Solitaire128x128.webp";
 export const SystemPropertiesIcon = "/icons/SystemProperties128x128.webp";
 export const MyDocumentsIcon = "/icons/MyDocuments128x128.webp";
 export const ContactMeIcon = "/icons/OutlookExpress128x128.webp";
+export const WinampIcon = "/icons/Winamp128x128.webp";
 
 export const initialWindowState: Record<WindowKey, WindowState> = {
     'Notepad': {
@@ -132,11 +133,11 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
     'Winamp': {
         isOpen: false,
         isFocused: false,
-        isMaximized: false,
-        isMinimized: false,
-        position: { x: 100, y: 100, width: 0, height: 0 }, // width and height not used
+        isMaximized: false, // Not used
+        isMinimized: false, // Not used
+        position: { x: 100, y: 100, width: 0, height: 0 }, // Not used
         savedPosition: null,
         title: 'Winamp',
-        icon: MinesweeperIcon, // Placeholder icon, replace with actual Winamp icon
+        icon: WinampIcon,
     }
 }
