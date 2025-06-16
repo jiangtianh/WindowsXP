@@ -16,6 +16,7 @@ import {
 
 export interface ClientInfo {
     fetched: boolean;
+    fetchedSuccess?: boolean;
     loading: boolean;
 
     deviceType: string;
@@ -79,16 +80,16 @@ export const getSystemInfo = createAsyncThunk(
         let result = { fetched: true } as ClientInfo;
         console.log('Fetching geo info...');
         try {
-            const response = await axios.get('https://freeipapi.com/api/json/');
+            const response = await axios.get('https://free.freeipapi.com/api/json');
             if (response.status === 200) {
                 const res = response.data;
                 result = {
                     ...result,
                     ip: res.ipAddress,
-                    location: `${res.zipCode}, ${res.cityName}, ${res.regionName}, ${res.countryName}`,
-                    isp: res.org,
+                    location: `${res.cityName}, ${res.regionName}, ${res.countryName}`,
+                    isp: res.asnOrganization,
                     coordinates: `${res.latitude} N, ${res.longitude} W`,
-                    fetched: true,
+                    fetchedSuccess: true,
                 }
             }
         } catch (error) {

@@ -110,9 +110,10 @@ const SystemPropertiesContent: React.FC = () => {
                             <div className="text-xs">
                                 <div className="mb-2">Network:</div>
                                 <div className="mb-5 ml-3 flex flex-col gap-2">
-                                    <p>IP address: {clientInfoSlice.ip}</p>
-                                    <p>Location: {clientInfoSlice.location}</p>
-                                    <p>Coordinates: {clientInfoSlice.coordinates}</p>
+                                    <p>IP address: {clientInfoSlice.ip ? clientInfoSlice.ip : "UNKNOWN"}</p>
+                                    <p>Location: {clientInfoSlice.location ? clientInfoSlice.location : "UNKNOWN"}</p>
+                                    <p>Coordinates: {clientInfoSlice.coordinates ? clientInfoSlice.coordinates : "UNKNOWN"}</p>
+                                    <p>ISP: {clientInfoSlice.isp ? clientInfoSlice.isp : "UNKNOWN"}</p>
                                 </div>
                             </div>
                         </div>

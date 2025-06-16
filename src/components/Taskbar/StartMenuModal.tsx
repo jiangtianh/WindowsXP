@@ -6,7 +6,7 @@ import { openWindow } from '../../services/Windows/windowsSlice';
 import { TASKBAR_HEIGHT } from '.';
 import './StartMenuModal.css';
 import type { WindowKey } from '../../services/types';
-import { NotepadIcon, MinesweeperIcon, SolitaireIcon, ProjectIcon, CVIcon, MyDocumentsIcon, ContactMeIcon } from '../../services/Windows/initialWindowState';
+import { NotepadIcon, MinesweeperIcon, ProjectIcon, CVIcon, MyDocumentsIcon, ContactMeIcon, SystemPropertiesIcon, WinampIcon, PinballIcon } from '../../services/Windows/initialWindowState';
 
 type StartMenuModalContent = {
     id: WindowKey;
@@ -18,28 +18,31 @@ type StartMenuModalContent = {
 
 const leftSideContent: StartMenuModalContent[] = [
     {
-        id: 'Projects',
-        title: "My Projects",
-        icon: ProjectIcon,
-        description: "View my projects"
-    },
-    {
         id: 'ContactMe',
         title: "Contact Me",
         icon: ContactMeIcon,
         description: "Get in touch with me"
     },
     {
-        id: 'CV',
-        title: "My CV",
-        icon: CVIcon,
-        description: "View my CV"
+        id: 'Winamp',
+        title: "Winamp",
+        icon: WinampIcon,
     },
     {
         id: 'Notepad',
         title: "Notepad",
         icon: NotepadIcon,
     },
+    {
+        id: 'Minesweeper',
+        title: "Minesweeper",
+        icon: MinesweeperIcon,
+    },
+    {
+        id: 'Pinball',
+        title: "Pinball",
+        icon: PinballIcon,
+    }
 ];
 
 const rightSideContent: StartMenuModalContent[] = [
@@ -49,16 +52,20 @@ const rightSideContent: StartMenuModalContent[] = [
         icon: MyDocumentsIcon,
     },
     {
-        id: 'Minesweeper',
-        title: "Minesweeper",
-        icon: MinesweeperIcon,
+        id: 'Projects',
+        title: "My Projects",
+        icon: ProjectIcon,
     },
     {
-        id: 'Solitaire',
-        title: "Solitaire",
-        icon: SolitaireIcon,
+        id: 'CV',
+        title: "My CV",
+        icon: CVIcon,
     },
-
+    {
+        id: 'SystemProperties',
+        title: "System Properties",
+        icon: SystemPropertiesIcon,
+    }
 ];
 
 

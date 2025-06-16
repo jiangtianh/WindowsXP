@@ -12,7 +12,55 @@ const initialTracks = [
             title: 'One Last Kiss',
         },
         url: '/music/OneLastKiss.mp3',
-        duration: 252,
+    },
+    {
+        metaData: {
+            artist: 'Yoko Takahashi',
+            title: 'Fly Me to the Moon (Yoko Takahashi Acid Bossa Version)',
+        },
+        url: '/music/YokoTakahashi-FlyMeToTheMoon(YOKOTAKAHASHIAcidBossaVersion).mp3',
+    },
+    {
+        metaData: {
+            artist: "Rosa Walton",
+            title: "I Really Want to Stay At Your House",
+        },
+        url: "/music/IReallyWanttoStayAtYourHousebyRosaWalton.mp3",
+    },
+    {
+        metaData: {
+            artist: "河南说唱之神",
+            title: "唉(pt.1)",
+        },
+        url: "/music/唉pt.1.mp3",
+    },
+    {
+        metaData: {
+            artist: "Juice WRLD",
+            title: "Back in Chicago",
+        },
+        url: "/music/BackinChicago.mp3",
+    },
+    {
+        metaData: {
+            artist: "Hi Fi Set",
+            title: "Sky Restaurant",
+        },
+        url: "/music/HiFiSet-SkyRestaurant.mp3",
+    },
+    {
+        metaData: {
+            artist: "Sunset Rollercoaster",
+            title: "Burgundy Red",
+        },
+        url: "/music/BurgundyRed.mp3",
+    },
+    {
+        metaData: {
+            artist: "Arianne",
+            title: "KOMM, SUSSER TOD M-10 Director's Edit Version | Evangelion Finally",
+        },
+        url: "/music/KOMM, SUSSER TOD M-10 Director's Edit Version  Evangelion Finally.mp3"
     }
 ];
 
