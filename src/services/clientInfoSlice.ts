@@ -31,6 +31,7 @@ export interface ClientInfo {
     displayRes: string;
     cpuCores: string;
     ip?: string;
+    isp?: string;
     location?: string;
     coordinates?: string;
 }
@@ -75,7 +76,7 @@ export const clientInfoSlice = createSlice({
 export const getSystemInfo = createAsyncThunk(
     'clientInfo/getSystemInfo',
     async () => {
-        let result = {};
+        let result = { fetched: true } as ClientInfo;
         console.log('Fetching geo info...');
         try {
             const response = await axios.get('https://freeipapi.com/api/json/');

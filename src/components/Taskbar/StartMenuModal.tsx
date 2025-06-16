@@ -34,7 +34,12 @@ const leftSideContent: StartMenuModalContent[] = [
         title: "My CV",
         icon: CVIcon,
         description: "View my CV"
-    }
+    },
+    {
+        id: 'Notepad',
+        title: "Notepad",
+        icon: NotepadIcon,
+    },
 ];
 
 const rightSideContent: StartMenuModalContent[] = [
@@ -53,11 +58,7 @@ const rightSideContent: StartMenuModalContent[] = [
         title: "Solitaire",
         icon: SolitaireIcon,
     },
-    {
-        id: 'Notepad',
-        title: "Notepad",
-        icon: NotepadIcon,
-    },
+
 ];
 
 
@@ -135,7 +136,9 @@ const StartMenuModal: React.FC<StartMenuModalProps> = ({ open, onClose }) => {
                                     <img src={item.icon} alt={item.title} className="w-7 h-7 md:w-9 md:h-9" />
                                     <div>
                                         <p>{item.title}</p>
-                                        <p style={{ fontSize: '10px', color: 'rgb(156 163 175)' }}>{item.description}</p>
+                                        {item.description && (
+                                            <p style={{ fontSize: '10px', color: 'rgb(156 163 175)' }}>{item.description}</p>
+                                        )}
                                     </div>
                                 </div>
                             </div>
