@@ -55,16 +55,6 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         title: 'Minesweeper',
         icon: MinesweeperIcon,
     },
-    'jsdos': {
-        isOpen: false,
-        isFocused: false,
-        isMaximized: false,
-        isMinimized: false,
-        position: { x: 310, y: 190, width: 440, height: 330 },
-        savedPosition: null,
-        title: 'Jsdos',
-        icon: GameControllerIcon,
-    },
     'Pinball': {
         isOpen: false,
         isFocused: false,
@@ -139,5 +129,25 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         savedPosition: null,
         title: 'Winamp',
         icon: WinampIcon,
-    }
+    },
+    'Doom': {
+        isOpen: false,
+        isFocused: false,
+        isMaximized: false,
+        isMinimized: false,
+        position: { x: 310, y: 190, width: 440, height: 330 },
+        savedPosition: null,
+        title: 'Doom',
+        icon: GameControllerIcon,
+    },
+    'SSF2T': {
+        isOpen: false,
+        isFocused: false,
+        isMaximized: false,
+        isMinimized: false,
+        position: { x: 310, y: 190, width: 440, height: 330 },
+        savedPosition: null,
+        title: 'Street Fighter II Turbo',
+        icon: GameControllerIcon, // Placeholder icon
+    },
 }

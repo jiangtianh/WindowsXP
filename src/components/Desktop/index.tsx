@@ -12,7 +12,6 @@ import Notepad from "../Applications/Notepad";
 import Projects from "../Applications/Projects";
 import CV from "../Applications/CV";
 import Minesweeper from "../Applications/Minesweeper";
-import Jsdos from "../Applications/jsdos";
 import Pinball from "../Applications/Pinball";
 import VirtualRei from "../Applications/VirtualRei";
 import Solitaire from "../Applications/Solitaire";
@@ -20,6 +19,9 @@ import SystemProperties from "../Applications/SystemProperties";
 import MyDocuments from "../Applications/MyDocuments";
 import ContactMe from "../Applications/ContactMe";
 import WinampPlayer from "../Applications/Winamp";
+
+import Doom from "../Applications/jsdos/Doom";
+import SSF2T from "../Applications/jsdos/SSF2T";
 
 const Desktop: React.FC = () => {
     const dispatch = useDispatch();
@@ -55,7 +57,8 @@ const Desktop: React.FC = () => {
                 <Projects />
                 <Minesweeper />
 
-                <Jsdos />
+                <Doom />
+                <SSF2T />
 
                 <Pinball />
                 <VirtualRei />

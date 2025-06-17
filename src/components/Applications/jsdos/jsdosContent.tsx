@@ -14,7 +14,7 @@ interface JsdosContentProps {
     bundleUrl: string;
 }
 
-const PinballContent: React.FC<JsdosContentProps> = ({ bundleUrl }) => {
+const JsdosContent: React.FC<JsdosContentProps> = ({ bundleUrl }) => {
     const dosRef = useRef<HTMLDivElement>(null);
     const dosInstanceRef = useRef<any>(null);
 
@@ -95,4 +95,4 @@ const PinballContent: React.FC<JsdosContentProps> = ({ bundleUrl }) => {
     );
 };
 
-export default PinballContent;
+export default JsdosContent;

@@ -22,11 +22,6 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
         icon: MinesweeperIcon,
         coordinates: { gridX: 0, gridY: 5 },
     },
-    'jsdos': {
-        title: 'Jsdos',
-        icon: GameControllerIcon,
-        coordinates: { gridX: 1, gridY: 1 },
-    },
     'Pinball': {
         title: 'Pinball',
         icon: PinballIcon,
@@ -56,5 +51,15 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
         title: 'Winamp',
         icon: WinampIcon,
         coordinates: { gridX: 0, gridY: 3 },
+    },
+    'Doom': {
+        title: 'Doom',
+        icon: GameControllerIcon,
+        coordinates: { gridX: 1, gridY: 1 },
+    },
+    'SSF2T': {
+        title: 'Street Fighter II Turbo',
+        icon: GameControllerIcon,
+        coordinates: { gridX: 1, gridY: 4 },
     }
 }
