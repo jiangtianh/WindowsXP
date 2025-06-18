@@ -57,8 +57,8 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
         icon: GameControllerIcon,
         coordinates: { gridX: 1, gridY: 1 },
     },
-    'SSF2T': {
-        title: 'Street Fighter II Turbo',
+    'Pacman': {
+        title: 'Pacman',
         icon: GameControllerIcon,
         coordinates: { gridX: 1, gridY: 4 },
     }

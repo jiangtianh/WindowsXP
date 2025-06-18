@@ -140,14 +140,14 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         title: 'Doom',
         icon: GameControllerIcon,
     },
-    'SSF2T': {
+    'Pacman': {
         isOpen: false,
         isFocused: false,
         isMaximized: false,
         isMinimized: false,
         position: { x: 310, y: 190, width: 440, height: 330 },
         savedPosition: null,
-        title: 'Street Fighter II Turbo',
+        title: 'Pacman',
         icon: GameControllerIcon, // Placeholder icon
     },
 }

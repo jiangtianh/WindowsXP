@@ -21,7 +21,7 @@ import ContactMe from "../Applications/ContactMe";
 import WinampPlayer from "../Applications/Winamp";
 
 import Doom from "../Applications/jsdos/Doom";
-import SSF2T from "../Applications/jsdos/SSF2T";
+import Pacman from "../Applications/jsdos/Pacman";
 
 const Desktop: React.FC = () => {
     const dispatch = useDispatch();
@@ -58,7 +58,7 @@ const Desktop: React.FC = () => {
                 <Minesweeper />
 
                 <Doom />
-                <SSF2T />
+                <Pacman />
 
                 <Pinball />
                 <VirtualRei />

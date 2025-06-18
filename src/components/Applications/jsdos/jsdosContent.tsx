@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { selectVolume } from "../../../services/volumeSlice";
-import "./jsdosContent.css";
 
 // Add global type declaration
 declare global {
@@ -36,6 +35,12 @@ const JsdosContent: React.FC<JsdosContentProps> = ({ bundleUrl }) => {
                     noFullscreen: false,
                     noSocialLinks: true,
                     kiosk: true,
+                    cycles: "max 70%",
+                    jsdosConf: {
+                        render: {
+                            vsync: false // Disable vsync which can cause input lag
+                        },
+                    },
                     onStart: () => {
                         console.log("Game started!");
                         // Apply initial volume when game starts
