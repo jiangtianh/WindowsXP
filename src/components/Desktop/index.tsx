@@ -19,6 +19,7 @@ import SystemProperties from "../Applications/SystemProperties";
 import MyDocuments from "../Applications/MyDocuments";
 import ContactMe from "../Applications/ContactMe";
 import WinampPlayer from "../Applications/Winamp";
+import MyPictures from "../Applications/MyPictures";
 
 import Doom from "../Applications/jsdos/Doom";
 import Pacman from "../Applications/jsdos/Pacman";
@@ -69,6 +70,7 @@ const Desktop: React.FC = () => {
                 <MyDocuments />
                 <ContactMe />
                 <WinampPlayer />
+                <MyPictures />
 
             </div>
             <Taskbar />

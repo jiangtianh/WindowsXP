@@ -13,6 +13,7 @@ export const SystemPropertiesIcon = "/icons/SystemProperties128x128.webp";
 export const MyDocumentsIcon = "/icons/MyDocuments128x128.webp";
 export const ContactMeIcon = "/icons/OutlookExpress128x128.webp";
 export const WinampIcon = "/icons/Winamp128x128.webp";
+export const MyPicturesIcon = "/icons/MyPictures128x128.webp";
 
 export const initialWindowState: Record<WindowKey, WindowState> = {
     'Notepad': {
@@ -150,4 +151,14 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         title: 'Pacman',
         icon: GameControllerIcon, // Placeholder icon
     },
+    'MyPictures': {
+        isOpen: false,
+        isFocused: false,
+        isMaximized: false,
+        isMinimized: false,
+        position: { x: 100, y: 100, width: 600, height: 400 },
+        savedPosition: null,
+        title: 'My Pictures',
+        icon: MyPicturesIcon,
+    }
 }

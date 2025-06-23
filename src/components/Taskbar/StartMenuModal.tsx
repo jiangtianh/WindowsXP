@@ -6,7 +6,7 @@ import { openWindow } from '../../services/Windows/windowsSlice';
 import { TASKBAR_HEIGHT } from '.';
 import './StartMenuModal.css';
 import type { WindowKey } from '../../services/types';
-import { NotepadIcon, MinesweeperIcon, ProjectIcon, CVIcon, MyDocumentsIcon, ContactMeIcon, SystemPropertiesIcon, WinampIcon, PinballIcon } from '../../services/Windows/initialWindowState';
+import { NotepadIcon, MinesweeperIcon, ProjectIcon, CVIcon, MyDocumentsIcon, ContactMeIcon, SystemPropertiesIcon, WinampIcon, PinballIcon, MyPicturesIcon } from '../../services/Windows/initialWindowState';
 
 type StartMenuModalContent = {
     id: WindowKey;
@@ -55,6 +55,11 @@ const rightSideContent: StartMenuModalContent[] = [
         id: 'Projects',
         title: "My Projects",
         icon: ProjectIcon,
+    },
+    {
+        id: 'MyPictures',
+        title: "My Pictures",
+        icon: MyPicturesIcon,
     },
     {
         id: 'CV',

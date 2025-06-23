@@ -1,0 +1,18 @@
+/* Fix for duplicate scrollbar arrows */
+.xp-scrollbar-fix::-webkit-scrollbar-button:single-button {
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.xp-scrollbar-fix::-webkit-scrollbar-button:single-button:horizontal:decrement,
+.xp-scrollbar-fix::-webkit-scrollbar-button:single-button:horizontal:increment {
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Hide duplicate buttons */
+.xp-scrollbar-fix::-webkit-scrollbar-button:start:increment,
+.xp-scrollbar-fix::-webkit-scrollbar-button:end:decrement {
+  display: none !important;
+}

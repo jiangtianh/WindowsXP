@@ -66,7 +66,7 @@ export const renderProjectConetent = (content: ProjectContent) => {
 
 export const projectsContentData: ProjectFolderItem = {
     id: 'root',
-    name: 'MyProjects',
+    name: 'My Projects',
     type: 'folder',
     icon: ProjectIcon,
     showCategories: true,

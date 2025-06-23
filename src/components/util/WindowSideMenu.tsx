@@ -12,6 +12,7 @@ const MyComputerIcon = "/icons/MyComputer32x32.webp";
 const NewFolderIcon = "/icons/NewFolder32x32.webp";
 const PublishToWebIcon = "/icons/PublishToWeb32x32.webp";
 const SharedFolderIcon = "/icons/SharedFolder32x32.webp";
+const MyPicturesIcon = "/icons/MyPictures32x32.webp";
 
 interface MenuItem {
     icon: string;
@@ -23,7 +24,7 @@ interface SectionData {
     items: MenuItem[];
 };
 
-type ItemType = 'SystemTasks' | 'Other' | 'Details' | 'FileAndFolderTasks' | 'OtherPlaces';
+type ItemType = 'SystemTasks' | 'Other' | 'Details' | 'FileAndFolderTasks' | 'OtherPlaces' | 'MyPictureOtherPlaces';
 interface WindowSideMenuProps {
     items?: ItemType[];
 }
@@ -35,7 +36,8 @@ const WindowSideMenu: React.FC<WindowSideMenuProps> = ({ items }) => {
         Other: false,
         Details: false,
         FileAndFolderTasks: false,
-        OtherPlaces: false
+        OtherPlaces: false,
+        MyPictureOtherPlaces: false
     });
 
     const toggleSection = (section: ItemType) => {
@@ -85,6 +87,15 @@ const WindowSideMenu: React.FC<WindowSideMenuProps> = ({ items }) => {
                 { icon: NewFolderIcon, label: "Make a new folder" },
                 { icon: PublishToWebIcon, label: "Publish this folder to the web" },
                 { icon: SharedFolderIcon, label: "Share this folder" },
+            ]
+        },
+        MyPictureOtherPlaces: {
+            title: "Other Places",
+            items: [
+                { icon: MyPicturesIcon, label: 'Shared Pictures' },
+                { icon: MyPicturesIcon, label: 'My Pictures' },
+                { icon: MyComputerIcon, label: 'My Computer' },
+                { icon: MyNetworkPlacesIcon, label: 'My Network Places' },
             ]
         }
     }
