@@ -156,7 +156,7 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         isFocused: false,
         isMaximized: false,
         isMinimized: false,
-        position: { x: 100, y: 100, width: 600, height: 400 },
+        position: { x: 100, y: 100, width: 950, height: 650 },
         savedPosition: null,
         title: 'My Pictures',
         icon: MyPicturesIcon,

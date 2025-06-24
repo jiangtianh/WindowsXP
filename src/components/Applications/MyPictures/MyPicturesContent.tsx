@@ -55,7 +55,7 @@ const MyPicturesContent: React.FC<MyPicturesProps> = ({ windowKey }) => {
 
             <div className="w-full h-full flex relative flex-1 min-h-0">
                 <div className="h-full flex-shrink-0">
-                    <WindowSideMenu items={['FileAndFolderTasks', 'MyPictureOtherPlaces', 'Details']} />
+                    <WindowSideMenu items={['PictureTasks', 'FileAndFolderTasks', 'MyPictureOtherPlaces', 'Details']} />
                 </div>
 
                 <div className="flex-1 overflow-auto h-full flex-col w-full font-family-tahoma">
