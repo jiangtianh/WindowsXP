@@ -6,7 +6,7 @@ import WindowTopNavigation from "../../util/WindowTopNavigation";
 import WindowSideMenu from "../../util/WindowSideMenu";
 import FolderButton from "../../util/FolderButton";
 
-import { projectsContentData, renderProjectConetent } from "./ProjectsContentData";
+import { projectsContentData, renderProjectConetent, renderP5jsContent } from "./ProjectsContentData";
 import "./ProjectContent.css";
 
 interface ProjectsContentProps {
@@ -85,12 +85,14 @@ const ProjectsContent: React.FC<ProjectsContentProps> = ({ windowKey }) => {
 
     const renderContent = () => {
         const current = getCurrentProjectItem();
+        console.log(current);
 
         if (!current) return <h1>Invalid path</h1>;
 
         if (current.type === 'file') {
             if (!current.content) return <h1>File have no content</h1>;
             return renderProjectConetent(current.content);
+
         } else if (current.type === 'folder') {
             if (!current.children) return <h1>Folder have no children</h1>;
 
@@ -156,6 +158,9 @@ const ProjectsContent: React.FC<ProjectsContentProps> = ({ windowKey }) => {
                     </div>
                 );
             }
+        } else if (current.type === 'p5js') {
+            if (!current.content) return <h1>p5.js have no content</h1>;
+            return renderP5jsContent(current.content);
         }
     };
 

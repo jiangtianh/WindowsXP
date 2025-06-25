@@ -1,5 +1,5 @@
 import { FaGithub, FaReact, FaJava, FaPython, FaAws, FaNodeJs } from "react-icons/fa";
-import { SiTypescript, SiRedux, SiSpringboot, SiMongodb, SiOllama, SiApachetomcat, SiRabbitmq, SiAmazonec2, SiApachejmeter, SiMysql, SiExpress } from "react-icons/si";
+import { SiTypescript, SiRedux, SiSpringboot, SiMongodb, SiOllama, SiApachetomcat, SiRabbitmq, SiAmazonec2, SiApachejmeter, SiMysql, SiExpress, SiTensorflow, SiDjango } from "react-icons/si";
 import { BsFiletypeScss } from "react-icons/bs";
 import { DiRedis } from "react-icons/di";
 
@@ -29,7 +29,9 @@ export type IconName =
     | "apachejmeter"
     | "mysql"
     | "nodejs"
-    | "express";
+    | "express"
+    | "tensorflow"
+    | "django";
 
 export const TechIcon: React.FC<{ name: IconName } & IconProps> = ({
     name,
@@ -76,6 +78,10 @@ export const TechIcon: React.FC<{ name: IconName } & IconProps> = ({
             return <FaNodeJs {...iconProps} />;
         case "express":
             return <SiExpress {...iconProps} />;
+        case "tensorflow":
+            return <SiTensorflow {...iconProps} />;
+        case "django":
+            return <SiDjango {...iconProps} />;
         default:
             return null;
     }

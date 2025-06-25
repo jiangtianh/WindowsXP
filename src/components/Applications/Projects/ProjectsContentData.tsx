@@ -4,6 +4,9 @@ const IMDBIcon = "/icons/IMDB128x128.webp";
 const SlideSpeakIcon = "/icons/SlideSpeak128x128.webp";
 const SkierResortAppIcon = "/icons/SkiResortApp128x128.webp";
 const TechNoteIcon = "/icons/TechNote128x128.webp";
+const ArtStyleRecoginitionIcon = "/icons/ArtStyleRecognition128x128.webp";
+const P5jsFolderIcon = "/icons/P5jsFolder128x128.webp";
+const P5jsFileIcon = "/icons/P5jsFile128x128.webp";
 
 import type { IconName } from "./ProjectTechStackIconMap";
 import { TechIcon } from "./ProjectTechStackIconMap";
@@ -22,7 +25,7 @@ interface ProjectContent {
 interface ProjectFolderItem {
     id: ProjectId;
     name: string;
-    type: 'file' | 'folder';
+    type: 'file' | 'folder' | 'p5js';
     icon: string;
     content?: ProjectContent;      // Only files have content
     showCategories?: boolean;       // Only folders have this property
@@ -62,6 +65,13 @@ export const renderProjectConetent = (content: ProjectContent) => {
             )}
         </div>
     );
+};
+export const renderP5jsContent = (content: ProjectContent) => {
+    return (
+        <div className="w-full h-full">
+            {content.content}
+        </div>
+    )
 }
 
 export const projectsContentData: ProjectFolderItem = {
@@ -308,6 +318,91 @@ export const projectsContentData: ProjectFolderItem = {
                 ),
                 repositoryLink: 'https://github.com/jiangtianh/5200Project'
             }
-        }
+        },
+        'ArtStyleRecognition': {
+            id: 'ArtStyleRecognition',
+            name: 'Art Style Recognition',
+            type: 'file',
+            category: 'AI & ML Projects',
+            icon: ArtStyleRecoginitionIcon,
+            content: {
+                title: 'Art Style Recognition Model',
+                dateTime: '2023 - 2 months',
+                techStack: [
+                    'python',
+                    'tensorflow',
+                    'django'
+                ],
+                content: (
+                    <>
+                        <p className="mb-5 font-bold text-xs">A deep learning model that classifies artworks into 14 distinct art styles, allowing users to upload and identify images through a Django-based web interface.</p>
+                        <p className="mb-1 font-bold text-xs">Key Features:</p>
+                        <ul className="list-disc ml-3 mb-3">
+                            <li>Developed an art style recognition model using TensorFlow, leveraging the powerful VGG 16 architecture for extracting deep image features.</li>
+                            <li>Trained the model over 46000 image files classified into 14 art styles, enabling it to distinguish and categorize various art styles with high accuracy.</li>
+                            <li>Achieved a top-1 accuracy of 59% and top-5 accuracy of 96% after 49 epochs, demonstrating the model's ability to make correct classifications, even in edge cases. Successfully deployed the model to a web interface where users could upload and classify images of artworks using Django.</li>
+                        </ul>
+                    </>
+                ),
+                repositoryLink: 'https://github.com/jiangtianh/art_style_recognition'
+            }
+        },
+        'p5.js': {
+            id: 'p5.js',
+            name: 'p5.js Experiments',
+            type: 'folder',
+            icon: P5jsFolderIcon,
+            showCategories: false,
+            children: {
+                'spinningBoxGrid': {
+                    id: 'spinningBoxGrid',
+                    name: 'Spinning Box Grid',
+                    type: 'p5js',
+                    icon: P5jsFileIcon,
+                    content: {
+                        content: (
+                            <iframe
+                                src="/p5js-projects/SpinningBoxGrid/index.html"
+                                title="Spinning Box Grid P5.js"
+                                sandbox="allow-scripts allow-same-origin"
+                                className="w-full h-full"
+                            />
+                        )
+                    }
+                },
+                'x&block': {
+                    id: 'x&block',
+                    name: 'X&Block',
+                    type: 'p5js',
+                    icon: P5jsFileIcon,
+                    content: {
+                        content: (
+                            <iframe
+                                src="/p5js-projects/X&Block/index.html"
+                                title="X&Block P5.js"
+                                sandbox="allow-scripts allow-same-origin"
+                                className="w-full h-full"
+                            />
+                        )
+                    }
+                },
+                'spinningCircle': {
+                    id: 'spinningCircle',
+                    name: 'Spinning Circle',
+                    type: 'p5js',
+                    icon: P5jsFileIcon,
+                    content: {
+                        content: (
+                            <iframe
+                                src="/p5js-projects/SpinningCircle/index.html"
+                                title="Spinning Circle P5.js"
+                                sandbox="allow-scripts allow-same-origin"
+                                className="w-full h-full"
+                            />
+                        )
+                    }
+                }
+            }
+        },
     }
 }
