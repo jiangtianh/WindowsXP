@@ -61,5 +61,10 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
         title: 'Pacman',
         icon: GameControllerIcon,
         coordinates: { gridX: 1, gridY: 4 },
+    },
+    'NFS': {
+        title: 'Need for Speed',
+        icon: GameControllerIcon,
+        coordinates: { gridX: 1, gridY: 5 },
     }
 }

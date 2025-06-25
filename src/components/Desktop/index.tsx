@@ -23,6 +23,7 @@ import MyPictures from "../Applications/MyPictures";
 
 import Doom from "../Applications/jsdos/Doom";
 import Pacman from "../Applications/jsdos/Pacman";
+import NFS from "../Applications/jsdos/NFS";
 
 const Desktop: React.FC = () => {
     const dispatch = useDispatch();
@@ -60,6 +61,7 @@ const Desktop: React.FC = () => {
 
                 <Doom />
                 <Pacman />
+                <NFS />
 
                 <Pinball />
                 <VirtualRei />

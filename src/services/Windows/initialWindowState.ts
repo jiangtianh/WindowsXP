@@ -160,5 +160,15 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         savedPosition: null,
         title: 'My Pictures',
         icon: MyPicturesIcon,
+    },
+    'NFS': {
+        isOpen: false,
+        isFocused: false,
+        isMaximized: false,
+        isMinimized: false,
+        position: { x: 50, y: 50, width: 900, height: 600 },
+        savedPosition: null,
+        title: 'Need for Speed',
+        icon: GameControllerIcon, // Placeholder icon
     }
 }
