@@ -1,5 +1,5 @@
 import type { WindowKey, DesktopIconInfo } from "../types"
-import { NotepadIcon, ProjectIcon, CVIcon, MinesweeperIcon, PinballIcon, GameControllerIcon, ReiIcon, SolitaireIcon, SystemPropertiesIcon, ContactMeIcon, WinampIcon } from "./initialWindowState";
+import { NotepadIcon, ProjectIcon, CVIcon, MinesweeperIcon, PinballIcon, ReiIcon, SolitaireIcon, SystemPropertiesIcon, ContactMeIcon, WinampIcon, DoomIcon, NFSIcon, PacmanIcon } from "./initialWindowState";
 
 export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>> = {
     'Projects': {
@@ -54,17 +54,17 @@ export const initialDesktopIconState: Partial<Record<WindowKey, DesktopIconInfo>
     },
     'Doom': {
         title: 'Doom',
-        icon: GameControllerIcon,
+        icon: DoomIcon,
         coordinates: { gridX: 1, gridY: 1 },
     },
     'Pacman': {
         title: 'Pacman',
-        icon: GameControllerIcon,
+        icon: PacmanIcon,
         coordinates: { gridX: 1, gridY: 4 },
     },
     'NFS': {
         title: 'Need for Speed',
-        icon: GameControllerIcon,
+        icon: NFSIcon,
         coordinates: { gridX: 1, gridY: 5 },
     }
 }

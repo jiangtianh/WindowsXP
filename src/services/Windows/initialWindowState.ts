@@ -14,6 +14,9 @@ export const MyDocumentsIcon = "/icons/MyDocuments128x128.webp";
 export const ContactMeIcon = "/icons/OutlookExpress128x128.webp";
 export const WinampIcon = "/icons/Winamp128x128.webp";
 export const MyPicturesIcon = "/icons/MyPictures128x128.webp";
+export const DoomIcon = "/icons/Doom128x128.webp";
+export const PacmanIcon = "/icons/Pacman128x128.webp";
+export const NFSIcon = "/icons/NFS128x128.webp";
 
 export const initialWindowState: Record<WindowKey, WindowState> = {
     'Notepad': {
@@ -139,7 +142,7 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         position: { x: 310, y: 190, width: 440, height: 330 },
         savedPosition: null,
         title: 'Doom',
-        icon: GameControllerIcon,
+        icon: DoomIcon,
     },
     'Pacman': {
         isOpen: false,
@@ -149,7 +152,7 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         position: { x: 310, y: 190, width: 440, height: 330 },
         savedPosition: null,
         title: 'Pacman',
-        icon: GameControllerIcon, // Placeholder icon
+        icon: PacmanIcon,
     },
     'MyPictures': {
         isOpen: false,
@@ -169,6 +172,6 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         position: { x: 50, y: 50, width: 900, height: 600 },
         savedPosition: null,
         title: 'Need for Speed',
-        icon: GameControllerIcon, // Placeholder icon
+        icon: NFSIcon,
     }
 }
