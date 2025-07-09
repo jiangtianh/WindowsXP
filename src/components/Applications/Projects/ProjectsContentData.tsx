@@ -401,6 +401,22 @@ export const projectsContentData: ProjectFolderItem = {
                             />
                         )
                     }
+                },
+                'flowers': {
+                    id: 'flowers',
+                    name: 'Flowers',
+                    type: 'p5js',
+                    icon: P5jsFileIcon,
+                    content: {
+                        content: (
+                            <iframe
+                                src="/p5js-projects/Flowers/index.html"
+                                title="Flowers P5.js"
+                                sandbox="allow-scripts allow-same-origin"
+                                className="w-full h-full"
+                            />
+                        )
+                    }
                 }
             }
         },
