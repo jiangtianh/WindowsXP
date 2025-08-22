@@ -7,7 +7,7 @@ const initialState = {
     desktopIcons: initialDesktopIconState,
     gridDimensions: {
         columns: 2, // Default value
-        rows: 6     // Default value
+        rows: 7     // Default value
     }
 }
 

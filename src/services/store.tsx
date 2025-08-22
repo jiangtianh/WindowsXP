@@ -5,6 +5,7 @@ import bootReducer from "./bootStatusSlice";
 import clientInfoReducer from "./clientInfoSlice";
 import windowsReducer from "./Windows/windowsSlice";
 import desktopIconsReducer from "./Windows/desktopIconSlice";
+import weatherInfoReducer from "./weatherInfoSlice";
 
 
 export const store = configureStore({
@@ -14,6 +15,7 @@ export const store = configureStore({
         clientInfo: clientInfoReducer,
         windows: windowsReducer,
         desktopIcons: desktopIconsReducer,
+        weather: weatherInfoReducer,
     },
 
 });

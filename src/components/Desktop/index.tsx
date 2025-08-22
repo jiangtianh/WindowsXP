@@ -25,6 +25,8 @@ import Doom from "../Applications/jsdos/Doom";
 import Pacman from "../Applications/jsdos/Pacman";
 import NFS from "../Applications/jsdos/NFS";
 
+import Weather from "../Applications/Weather";
+
 const Desktop: React.FC = () => {
     const dispatch = useDispatch();
     const volume = useSelector(selectVolume);
@@ -73,6 +75,8 @@ const Desktop: React.FC = () => {
                 <ContactMe />
                 <WinampPlayer />
                 <MyPictures />
+
+                <Weather />
 
             </div>
             <Taskbar />

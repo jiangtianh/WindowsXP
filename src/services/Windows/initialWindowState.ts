@@ -17,6 +17,7 @@ export const MyPicturesIcon = "/icons/MyPictures128x128.webp";
 export const DoomIcon = "/icons/Doom128x128.webp";
 export const PacmanIcon = "/icons/Pacman128x128.webp";
 export const NFSIcon = "/icons/NFS128x128.webp";
+export const WeatherIcon = "/icons/Weather128x128.webp";
 
 export const initialWindowState: Record<WindowKey, WindowState> = {
     'Notepad': {
@@ -173,5 +174,15 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         savedPosition: null,
         title: 'Need for Speed',
         icon: NFSIcon,
+    },
+    'Weather': {
+        isOpen: false,
+        isFocused: false,
+        isMaximized: false,
+        isMinimized: false,
+        position: { x: 200, y: 150, width: 400, height: 300 },
+        savedPosition: null,
+        title: 'Weather',
+        icon: WeatherIcon,
     }
 }

@@ -6,7 +6,7 @@ import { openWindow } from '../../services/Windows/windowsSlice';
 import { TASKBAR_HEIGHT } from '.';
 import './StartMenuModal.css';
 import type { WindowKey } from '../../services/types';
-import { NotepadIcon, MinesweeperIcon, ProjectIcon, CVIcon, MyDocumentsIcon, ContactMeIcon, SystemPropertiesIcon, WinampIcon, PinballIcon, MyPicturesIcon } from '../../services/Windows/initialWindowState';
+import { NotepadIcon, MinesweeperIcon, ProjectIcon, CVIcon, MyDocumentsIcon, ContactMeIcon, SystemPropertiesIcon, WinampIcon, PinballIcon, MyPicturesIcon, WeatherIcon } from '../../services/Windows/initialWindowState';
 
 type StartMenuModalContent = {
     id: WindowKey;
@@ -27,6 +27,12 @@ const leftSideContent: StartMenuModalContent[] = [
         id: 'Winamp',
         title: "Winamp",
         icon: WinampIcon,
+    },
+    {
+        id: 'Weather',
+        title: "Weather",
+        icon: WeatherIcon,
+        description: "Check the weather forecast"
     },
     {
         id: 'Notepad',
