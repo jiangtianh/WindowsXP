@@ -1,0 +1,16 @@
+.weather-tab-button:hover {
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #F5F5F5, inset -2px -2px #A9A9A9, inset 2px 2px #DCDCDC;
+}
+
+.weather-tab-button-selected {
+    box-shadow: inset -1px -1px #F5F5F5, inset 1px 1px #808080, inset -2px -2px #DCDCDC, inset 2px 2px #A9A9A9;
+    transform: translate(1px, 1px);
+}
+
+
+.weather-content-box-shadow {
+    box-shadow: inset 1px 1px #fcfcfe, inset -1px -1px #fcfcfe, 1px 2px 2px 0 rgba(208, 206, 191, .75);
+}
+.weather-content-border {
+    border: 1px solid #919b9c;
+}

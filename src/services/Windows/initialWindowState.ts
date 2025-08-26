@@ -180,7 +180,7 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         isFocused: false,
         isMaximized: false,
         isMinimized: false,
-        position: { x: 200, y: 150, width: 400, height: 300 },
+        position: { x: 200, y: 150, width: 600, height: 400 },
         savedPosition: null,
         title: 'Weather',
         icon: WeatherIcon,

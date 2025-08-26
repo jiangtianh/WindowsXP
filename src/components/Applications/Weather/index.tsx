@@ -5,7 +5,7 @@ import WeatherContent from "./WeatherContent";
 const Weather: React.FC = () => {
     const windowKey: WindowKey = "Weather";
     return (
-        <WindowWrapper windowKey={windowKey}>
+        <WindowWrapper windowKey={windowKey} hideMaximize minWidth={600} minHeight={400}>
             <WeatherContent />
         </WindowWrapper>
     );

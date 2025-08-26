@@ -37,10 +37,13 @@ interface WeatherData {
         latitude: number;
         longitude: number;
         elevation: number;
+        timezone: string | null;
+        timezoneAbbreviation: string | null;
+        utcOffsetSeconds: number;
     };
 };
 
-interface WeatherState {
+export interface WeatherState {
     data: WeatherData | null;
     lastFetched: number | null;
     loading: boolean;
@@ -62,6 +65,7 @@ export const fetchWeatherData = createAsyncThunk(
             "longitude": longitude,
             "daily": ["weather_code", "temperature_2m_max", "temperature_2m_min", "wind_speed_10m_max", "wind_direction_10m_dominant", "precipitation_sum"],
             "current": ["wind_gusts_10m", "wind_direction_10m", "wind_speed_10m", "apparent_temperature", "relative_humidity_2m", "temperature_2m", "is_day", "precipitation", "rain", "showers", "snowfall", "weather_code", "cloud_cover", "pressure_msl", "surface_pressure"],
+            "timezone": "auto",
             "forecast_days": 5,
         };
         const responses = await fetchWeatherApi(OPEN_METEO_API_URL, params);
@@ -71,7 +75,7 @@ export const fetchWeatherData = createAsyncThunk(
         const daily = response.daily()!;
         const weatherData: WeatherData = {
             current: {
-                time: new Date((Number(current.time()) + utcOffsetSeconds) * 1000).toISOString(),
+                time: new Date((Number(current.time()) + utcOffsetSeconds) * 1000).toString(),
                 wind_gusts_10m: current.variables(0)!.value(),
                 wind_direction_10m: current.variables(1)!.value(),
                 wind_speed_10m: current.variables(2)!.value(),
@@ -103,6 +107,9 @@ export const fetchWeatherData = createAsyncThunk(
                 latitude: response.latitude(),
                 longitude: response.longitude(),
                 elevation: response.elevation(),
+                timezone: response.timezone(),
+                timezoneAbbreviation: response.timezoneAbbreviation(),
+                utcOffsetSeconds: response.utcOffsetSeconds(),
             }
         };
         return weatherData;
