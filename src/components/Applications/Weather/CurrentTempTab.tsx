@@ -1,5 +1,5 @@
 import TemperatureScale from "./TemperatureScale";
-import { renderMainWeatherInfo, renderLocationInfo } from "./weatherUtil";
+import { renderMainWeatherInfo, renderLocationInfo, weatherCodeToIcon } from "./weatherUtil";
 import { useSelector } from "react-redux";
 import { selectWeatherData, selectWeatherLastFetched } from "../../../services/weatherInfoSlice";
 
@@ -16,14 +16,16 @@ const CurrentTempTab: React.FC = () => {
                 <div className="flex flex-1 min-h-0">
 
                     {/* Temperature Icon Container */}
-                    <div className="w-22 flex-shrink-0">
-                        placeholder
+                    <div className="w-20 flex-shrink-0 pt-8 ">
+                        <div className="bg-[#A0BAE8]">
+                            {weatherCodeToIcon(weatherData?.current?.weather_code)}
+                        </div>
                     </div>
 
                     {/* Main weather info container */}
                     <div
                         className="bg-white flex-1 p-1 weather-content-box-shadow weather-content-border 
-                        font-family-tahoma overflow-x-auto overflow-y-scroll min-h-0"
+                        font-family-tahoma overflow-x-auto overflow-y-scroll min-h-0 ml-2"
                     >
                         {renderMainWeatherInfo(weatherData)}
                     </div>

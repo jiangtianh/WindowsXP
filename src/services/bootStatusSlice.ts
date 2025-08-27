@@ -17,7 +17,7 @@ interface BootState {
 }
 
 const initialState: BootState = {
-    currentPhase: BootPhase.BIOS, // Default should be BIOS
+    currentPhase: BootPhase.DESKTOP, // Default should be BIOS
 };
 
 export const bootSlice = createSlice({

@@ -67,6 +67,7 @@ export const fetchWeatherData = createAsyncThunk(
             "current": ["wind_gusts_10m", "wind_direction_10m", "wind_speed_10m", "apparent_temperature", "relative_humidity_2m", "temperature_2m", "is_day", "precipitation", "rain", "showers", "snowfall", "weather_code", "cloud_cover", "pressure_msl", "surface_pressure"],
             "timezone": "auto",
             "forecast_days": 5,
+            "timeformat": "unixtime",
         };
         const responses = await fetchWeatherApi(OPEN_METEO_API_URL, params);
         const response = responses[0];
@@ -75,7 +76,7 @@ export const fetchWeatherData = createAsyncThunk(
         const daily = response.daily()!;
         const weatherData: WeatherData = {
             current: {
-                time: new Date((Number(current.time()) + utcOffsetSeconds) * 1000).toString(),
+                time: new Date(Number(current.time()) * 1000).toString(),
                 wind_gusts_10m: current.variables(0)!.value(),
                 wind_direction_10m: current.variables(1)!.value(),
                 wind_speed_10m: current.variables(2)!.value(),

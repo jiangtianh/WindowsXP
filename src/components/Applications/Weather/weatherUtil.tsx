@@ -1,69 +1,76 @@
 import type { WeatherState } from "../../../services/weatherInfoSlice";
 
+const weatherCodeMap = {
+    0: ['clear', 'Clear sky'],
 
-const weatherCodeToText = (code: number): string => {
-    if (code === undefined || code === null) return 'N/A';
+    1: ['mostly-clear', 'Mainly clear'],
+    2: ['partly-cloudy', 'Partly cloudy'],
+    3: ['overcast', 'Overcast'],
 
-    switch (code) {
-        case 0:
-            return 'Clear sky';
-        case 1:
-            return 'Mainly clear';
-        case 2:
-            return 'Partly cloudy';
-        case 3:
-            return 'Overcast';
-        case 45:
-            return 'Fog';
-        case 48:
-            return 'Depositing rime fog';
-        case 51:
-            return 'Light drizzle';
-        case 53:
-            return 'Moderate drizzle';
-        case 55:
-            return 'Dense drizzle';
-        case 56:
-            return 'Light freezing drizzle';
-        case 57:
-            return 'Dense freezing drizzle';
-        case 61:
-            return 'Slight rain';
-        case 63:
-            return 'Moderate rain';
-        case 65:
-            return 'Heavy rain';
-        case 66:
-            return 'Light freezing rain';
-        case 67:
-            return 'Heavy freezing rain';
-        case 71:
-            return 'Slight snow fall';
-        case 73:
-            return 'Moderate snow fall';
-        case 75:
-            return 'Heavy snow fall';
-        case 77:
-            return 'Snow grains';
-        case 80:
-            return 'Slight rain showers';
-        case 81:
-            return 'Moderate rain showers';
-        case 82:
-            return 'Violent rain showers';
-        case 85:
-            return 'Slight snow showers';
-        case 86:
-            return 'Heavy snow showers';
-        case 95:
-            return 'Slight or moderate thunderstorm';
-        case 96:
-            return 'Thunderstorm with slight hail';
-        case 99:
-            return 'Thunderstorm with heavy hail';
-        default:
-            return `Unknown weather (code: ${code})`;
+    45: ['fog', 'Fog'],
+    48: ['rime-fog', 'Rime fog'],
+
+    51: ['light-drizzle', 'Light drizzle'],
+    53: ['moderate-drizzle', 'Moderate drizzle'],
+    55: ['dense-drizzle', 'Dense drizzle'],
+
+    56: ['light-freezing-drizzle', 'Light freezing drizzle'],
+    57: ['dense-freezing-drizzle', 'Dense freezing drizzle'],
+
+    61: ['light-rain', 'Slight rain'],
+    63: ['moderate-rain', 'Moderate rain'],
+    65: ['heavy-rain', 'Heavy rain'],
+
+    66: ['light-freezing-rain', 'Light freezing rain'],
+    67: ['heavy-freezing-rain', 'Heavy freezing rain'],
+
+    71: ['slight-snowfall', 'Slight snowfall'],
+    73: ['moderate-snowfall', 'Moderate snowfall'],
+    75: ['heavy-snowfall', 'Heavy snowfall'],
+
+    77: ['snowflake', 'Snow grains'],
+
+    80: ['light-rain', 'Slight rain showers'],
+    81: ['moderate-rain', 'Moderate rain showers'],
+    82: ['heavy-rain', 'Violent rain showers'],
+
+    85: ['slight-snowfall', 'Slight snow showers'],
+    86: ['heavy-snowfall', 'Heavy snow showers'],
+
+    95: ['thunderstorm', 'Slight or moderate thunderstorm'],
+
+    96: ['thunderstorm-with-hail', 'Thunderstorm with slight hail'],
+    99: ['thunderstorm-with-hail', 'Thunderstorm with heavy hail']
+}
+const weatherCodeToText = (code: number) => {
+    if (code in weatherCodeMap) {
+        return (weatherCodeMap as Record<number, string[]>)[code][1];
     }
+    return `Unknown weather (code: ${code})`;
+}
+
+export const weatherCodeToIcon = (code: number | undefined) => {
+    if (code === undefined || code === null) {
+        return (
+            <img
+                src={`/icons/airy/unknown.png`}
+                alt="Unknown weather"
+                className="w-full h-full object-contain"
+            />
+        );
+    }
+
+    const iconName = code in weatherCodeMap
+        ? (weatherCodeMap as Record<number, string[]>)[code][0]
+        : 'unknown';
+
+    return (
+        <img
+            src={`/icons/airy/${iconName}@4x.png`}
+            alt={weatherCodeToText(code)}
+            className="w-full object-contain"
+        />
+    );
 }
 
 const renderTextLine = (title: string | null = null, text: string | number = "", unit: string = "") => {
