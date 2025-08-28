@@ -42,7 +42,7 @@ const weatherCodeMap = {
     96: ['thunderstorm-with-hail', 'Thunderstorm with slight hail'],
     99: ['thunderstorm-with-hail', 'Thunderstorm with heavy hail']
 }
-const weatherCodeToText = (code: number) => {
+export const weatherCodeToText = (code: number) => {
     if (code in weatherCodeMap) {
         return (weatherCodeMap as Record<number, string[]>)[code][1];
     }
@@ -81,12 +81,12 @@ const renderTextLine = (title: string | null = null, text: string | number = "",
     );
 }
 
-const roundToFixed = (value: number | undefined, digits: number = 1): string => {
+export const roundToFixed = (value: number | undefined, digits: number = 1): string => {
     if (value === undefined || value === null || isNaN(value)) return 'N/A';
     return value.toFixed(digits);
 }
 
-const degreesToCompass = (degrees: number): string => {
+export const degreesToCompass = (degrees: number): string => {
     if (degrees === undefined || degrees === null || isNaN(degrees)) return 'N/A';
     const normalizedDegrees = ((degrees % 360) + 360) % 360;
     const directions = [
@@ -99,23 +99,32 @@ const degreesToCompass = (degrees: number): string => {
     return `${directions[index]}, ${Math.round(normalizedDegrees)} degrees`;
 }
 
-export const renderMainWeatherInfo = (weatherData: WeatherState['data']) => {
+export const renderMainWeatherInfo = (weatherData: WeatherState['data'], units: 'metric' | 'imperial') => {
     if (!weatherData) return null;
-
+    const UNIT = units === 'imperial' ? 'F' : 'C';
+    const SPEEDUNIT = units === 'imperial' ? 'mph' : 'km/h';
+    const RAINUNIT = units === 'imperial' ? 'in' : 'mm';
+    const SNOWUNIT = units === 'imperial' ? 'in' : 'cm';
     return (
         <>
-            {renderTextLine('Observation time', weatherData?.current?.time)}
-            {renderTextLine('Weather', weatherCodeToText(weatherData?.current?.weather_code))}
-            {renderTextLine('Temperature', Math.round(weatherData?.current?.temperature_2m), "C")}
-            {renderTextLine('Apparent temperature', Math.round(weatherData?.current?.apparent_temperature), "C")}
-            {renderTextLine('Relative humidity', weatherData?.current?.relative_humidity_2m, "%")}
-            {renderTextLine('Wind direction', degreesToCompass(weatherData?.current?.wind_direction_10m))}
-            {renderTextLine('Wind speed', roundToFixed(weatherData?.current?.wind_speed_10m, 4), "km/h")}
-            {renderTextLine('Wind gusts', roundToFixed(weatherData?.current?.wind_gusts_10m, 4), "km/h")}
-            {renderTextLine('MSL pressure', Math.round(weatherData?.current?.pressure_msl), "hPa")}
-            {renderTextLine('Surface pressure', Math.round(weatherData?.current?.surface_pressure), "hPa")}
-            {renderTextLine('Precipitation', Math.round(weatherData?.current?.precipitation), "mm")}
-            {renderTextLine('Cloud cover', weatherData?.current?.cloud_cover, "%")}
+            {weatherData?.current?.time !== undefined && renderTextLine('Observation time', weatherData?.current?.time)}
+            {weatherData?.current?.weather_code !== undefined && renderTextLine('Weather', weatherCodeToText(weatherData?.current?.weather_code))}
+            {weatherData?.current?.temperature_2m !== undefined && renderTextLine('Temperature', displayTemperature(weatherData?.current?.temperature_2m, units), UNIT)}
+            {weatherData?.current?.apparent_temperature !== undefined && renderTextLine('Apparent temperature', displayTemperature(weatherData?.current?.apparent_temperature, units), UNIT)}
+            {weatherData?.current?.relative_humidity_2m !== undefined && renderTextLine('Relative humidity', weatherData?.current?.relative_humidity_2m, "%")}
+
+            {weatherData?.current?.wind_direction_10m !== undefined && renderTextLine('Wind direction', degreesToCompass(weatherData?.current?.wind_direction_10m))}
+            {weatherData?.current?.wind_speed_10m !== undefined && renderTextLine('Wind speed', roundToFixed(displaySpeed(weatherData?.current?.wind_speed_10m, units), 2), SPEEDUNIT)}
+            {weatherData?.current?.wind_gusts_10m !== undefined && renderTextLine('Wind gusts', roundToFixed(displaySpeed(weatherData?.current?.wind_gusts_10m, units), 2), SPEEDUNIT)}
+
+            {weatherData?.current?.pressure_msl !== undefined && renderTextLine('MSL pressure', Math.round(weatherData?.current?.pressure_msl), "hPa")}
+            {weatherData?.current?.surface_pressure !== undefined && renderTextLine('Surface pressure', Math.round(weatherData?.current?.surface_pressure), "hPa")}
+            {weatherData?.current?.cloud_cover !== undefined && renderTextLine('Cloud cover', weatherData?.current?.cloud_cover, "%")}
+
+            {weatherData?.current?.precipitation !== undefined && renderTextLine('Precipitation', roundToFixed(displayMmToInches(weatherData?.current?.precipitation, units), 2), RAINUNIT)}
+            {weatherData?.current?.rain !== undefined && renderTextLine('Rain', roundToFixed(displayMmToInches(weatherData?.current?.rain, units), 2), RAINUNIT)}
+            {weatherData?.current?.showers !== undefined && renderTextLine('Showers', roundToFixed(displayMmToInches(weatherData?.current?.showers, units), 2), RAINUNIT)}
+            {weatherData?.current?.snowfall !== undefined && renderTextLine('Snowfall', roundToFixed(displayCmToInches(weatherData?.current?.snowfall, units), 2), SNOWUNIT)}
         </>
     );
 }
@@ -132,3 +141,43 @@ export const renderLocationInfo = (weatherData: WeatherState['data']) => {
         </>
     );
 }
+
+// C to F
+export const displayTemperature = (temperature: number, unit: 'metric' | 'imperial'): number => {
+    if (unit === 'imperial') {
+        return Math.round((temperature * 9 / 5) + 32);
+    }
+    return Math.round(temperature);
+}
+
+// km to miles
+export const displaySpeed = (speed: number, unit: 'metric' | 'imperial'): number => {
+    if (unit === 'imperial') {
+        return speed * 0.621371;
+    }
+    return speed;
+}
+
+export const displayMmToInches = (mm: number, unit: 'metric' | 'imperial'): number => {
+    if (unit === 'imperial') {
+        return mm / 25.4;
+    }
+    return mm;
+}
+
+export const displayCmToInches = (cm: number, unit: 'metric' | 'imperial'): number => {
+    if (unit === 'imperial') {
+        return cm / 2.54;
+    }
+    return cm;
+}
+
+export const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const dayName = days[date.getDay()];
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${dayName}\n${year}.${month}.${day}`;
+};

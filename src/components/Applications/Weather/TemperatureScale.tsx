@@ -1,10 +1,22 @@
+interface TemperatureScaleProps {
+    temperature: number | null;
+    units: 'metric' | 'imperial';
+}
 
+const TemperatureScale: React.FC<TemperatureScaleProps> = ({ temperature, units }) => {
 
+    let currentTemp = Math.round(temperature ?? 0);
+    const UNIT = units === 'imperial' ? 'F' : 'C';
 
-const TemperatureScale: React.FC<{ temperature: number | null }> = ({ temperature }) => {
+    // Different temperature scales based on units
+    const tempScale = units === 'imperial'
+        ? [140, 120, 100, 80, 60, 40, 20, 0, -20, -40, -60, -80] // Fahrenheit scale
+        : [60, 50, 40, 30, 20, 10, 0, -10, -20, -30, -40, -50];  // Celsius scale
 
-    const currentTemp = Math.round(temperature ?? 0);
-    const tempScale = [60, 50, 40, 30, 20, 10, 0, -10, -20, -30, -40, -50];
+    // Convert Celsius to Fahrenheit if needed
+    if (units === 'imperial' && temperature !== null) {
+        currentTemp = Math.round((temperature * 9 / 5) + 32);
+    }
 
     const getBlockFillPercentage = (blockIndex: number) => {
         const blockTop = tempScale[blockIndex];
@@ -23,18 +35,16 @@ const TemperatureScale: React.FC<{ temperature: number | null }> = ({ temperatur
 
     return (
         <div className="flex flex-col h-full border border-black w-14 font-family-tahoma flex-shrink-0">
-
             {tempScale.slice(0, -1).map((tempScaleValue, index) => {
-                const isLastBlock = index === tempScale.length - 1;
-                const fillPercentage = isLastBlock ? 0 : getBlockFillPercentage(index);
+                const fillPercentage = getBlockFillPercentage(index);
 
                 return (
                     <div
                         key={index}
                         className={`
-                            flex-1 w-full pr-1 text-right bg-white relative select-none
-                            ${index !== tempScale.length - 1 ? 'border-b-1' : ''}
-                        `}
+                        flex-1 w-full pr-1 text-right bg-white relative select-none text-xs
+                        ${index !== tempScale.slice(0, -1).length - 1 ? 'border-b-1' : ''}
+                    `}
                     >
                         {fillPercentage > 0 && (
                             <div
@@ -47,13 +57,13 @@ const TemperatureScale: React.FC<{ temperature: number | null }> = ({ temperatur
                             />
                         )}
                         {tempScaleValue}
-
                     </div>
                 )
             })}
 
-            <div className="flex-1 w-full flex justify-center items-center text-sm">
-                {currentTemp} °C
+            {/* Temperature display as another flex-1 item */}
+            <div className="flex-1 w-full flex justify-center items-center text-sm bg-white border-t-1">
+                {currentTemp}°{UNIT}
             </div>
         </div>
     )

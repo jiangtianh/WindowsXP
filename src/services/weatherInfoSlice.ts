@@ -48,6 +48,10 @@ export interface WeatherState {
     lastFetched: number | null;
     loading: boolean;
     error: string | null;
+    options: {
+        units: 'metric' | 'imperial';
+        updateInterval: number;
+    }
 };
 
 const initialState: WeatherState = {
@@ -55,6 +59,10 @@ const initialState: WeatherState = {
     lastFetched: null,
     loading: false,
     error: null,
+    options: {
+        units: 'metric',
+        updateInterval: 1,
+    }
 };
 
 export const fetchWeatherData = createAsyncThunk(
@@ -71,7 +79,6 @@ export const fetchWeatherData = createAsyncThunk(
         };
         const responses = await fetchWeatherApi(OPEN_METEO_API_URL, params);
         const response = responses[0];
-        const utcOffsetSeconds = response.utcOffsetSeconds();
         const current = response.current()!;
         const daily = response.daily()!;
         const weatherData: WeatherData = {
@@ -95,7 +102,7 @@ export const fetchWeatherData = createAsyncThunk(
             },
             daily: {
                 time: [...Array((Number(daily.timeEnd()) - Number(daily.time())) / daily.interval())].map(
-                    (_, i) => new Date((Number(daily.time()) + i * daily.interval() + utcOffsetSeconds) * 1000).toISOString() // Convert to ISO strings
+                    (_, i) => new Date((Number(daily.time()) + i * daily.interval()) * 1000).toString()
                 ),
                 weather_code: Array.from(daily.variables(0)?.valuesArray() || []),
                 temperature_2m_max: Array.from(daily.variables(1)?.valuesArray() || []),
@@ -129,6 +136,12 @@ const weatherInfoSlice = createSlice({
         },
         clearError: (state) => {
             state.error = null;
+        },
+        setUnits: (state, action: PayloadAction<'metric' | 'imperial'>) => {
+            state.options.units = action.payload;
+        },
+        setUpdateInterval: (state, action: PayloadAction<number>) => {
+            state.options.updateInterval = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -151,18 +164,21 @@ const weatherInfoSlice = createSlice({
 });
 
 
-export const { clearWeatherData, clearError } = weatherInfoSlice.actions;
+export const { clearWeatherData, clearError, setUnits, setUpdateInterval } = weatherInfoSlice.actions;
 
 export const selectWeatherData = (state: RootState) => state.weather.data;
 export const selectWeatherLoading = (state: RootState) => state.weather.loading;
 export const selectWeatherError = (state: RootState) => state.weather.error;
 export const selectWeatherLastFetched = (state: RootState) => state.weather.lastFetched;
+export const selectWeatherUnits = (state: RootState) => state.weather.options.units;
+export const selectWeatherUpdateInterval = (state: RootState) => state.weather.options.updateInterval;
 
-// Helper function to check if the data need to be refreshed (1 hour interval)
+
 export const shouldRefreshWeather = (state: RootState): boolean => {
     const lastFetched = selectWeatherLastFetched(state);
     if (!lastFetched) return true;
-    return Date.now() - lastFetched > 60 * 60 * 1000; // 1 hour
+    const updateInterval = state.weather.options.updateInterval * 60 * 60 * 1000;
+    return Date.now() - lastFetched > updateInterval;
 };
 
 export default weatherInfoSlice.reducer;
