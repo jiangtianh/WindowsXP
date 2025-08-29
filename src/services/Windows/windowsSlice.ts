@@ -128,7 +128,15 @@ const windowsSlice = createSlice({
                     height: (window.innerHeight - TASKBAR_HEIGHT) || 600
                 }
             }
-        }
+        },
+
+        resizeWindow: (state, action: PayloadAction<{ key: WindowKey; width: number; height: number }>) => {
+            const { key, width, height } = action.payload;
+            if (state.windows[key]) {
+                state.windows[key].position.width = width;
+                state.windows[key].position.height = height;
+            }
+        },
     }
 });
 
@@ -141,7 +149,8 @@ export const {
     updateWindowPosition,
     minimizeWindow,
     setMaximizedOff,
-    maximizeWindow
+    maximizeWindow,
+    resizeWindow
 } = windowsSlice.actions;
 
 export default windowsSlice.reducer;

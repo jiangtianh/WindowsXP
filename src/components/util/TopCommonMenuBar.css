@@ -9,3 +9,28 @@
     background-color: rgb(22, 96, 232) !important;
     color: white !important;
 }
+
+/* Add these new styles */
+.menu-bar-buttons.active {
+    background-color: rgb(22, 96, 232) !important;
+    color: white !important;
+}
+
+.submenu-item {
+    color: black !important; /* Default text color for submenu items */
+}
+
+.submenu-item:hover {
+    background-color: rgb(22, 96, 232) !important;
+    color: white !important;
+}
+
+.submenu-item.disabled {
+    color: rgb(128, 128, 128) !important;
+    cursor: not-allowed !important;
+}
+
+.submenu-item.disabled:hover {
+    background-color: transparent !important;
+    color: rgb(128, 128, 128) !important;
+}

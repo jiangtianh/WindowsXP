@@ -55,7 +55,7 @@ export const initialWindowState: Record<WindowKey, WindowState> = {
         isFocused: false,
         isMaximized: false,
         isMinimized: false,
-        position: { x: 200, y: 200, width: 205, height: 305 },
+        position: { x: 200, y: 200, width: null, height: null },
         savedPosition: null,
         title: 'Minesweeper',
         icon: MinesweeperIcon,

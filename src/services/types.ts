@@ -3,8 +3,8 @@ export type WindowKey = 'Notepad' | 'Projects' | 'CV' | 'Minesweeper' | 'Pinball
 export interface WindowPosition {
     x: number;
     y: number;
-    width: number;
-    height: number;
+    width: number | null;
+    height: number | null;
 }
 
 export interface WindowState {

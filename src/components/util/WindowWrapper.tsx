@@ -21,7 +21,7 @@ interface WindowWrapperProps {
 }
 
 const WindowWrapper: React.FC<WindowWrapperProps> = ({
-    windowKey, children, minWidth, minHeight, maxWidth, maxHeight, enableResizing, hideMaximize, hideMinimize, showHelp
+    windowKey, children, minWidth = 300, minHeight = 200, maxWidth, maxHeight, enableResizing, hideMaximize, hideMinimize, showHelp
 }) => {
 
     const dispatch = useDispatch();
@@ -48,6 +48,13 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({
         }
         return baseIndex + queuePosition + 1;
     }, [openQueue, windowKey])
+
+    const effectiveSize = useMemo(() => {
+        return {
+            width: windowState.position.width ?? minWidth,
+            height: windowState.position.height ?? minHeight
+        };
+    }, [windowState.position.width, windowState.position.height, minWidth, minHeight]);
 
 
     const windowName = useSelector((state: RootState) => state.windows.windows[windowKey].title);
@@ -132,7 +139,7 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({
             ref={windowRef}
             className={`window cursor-default ${windowState.isFocused ? '' : 'window-unfocused'} window-wrapper`}
             style={{ display: windowState.isMinimized ? 'none' : 'inline-block', zIndex: zIndex }}
-            size={{ width: windowState.position.width, height: windowState.position.height }}
+            size={effectiveSize}
             position={localposition}
             dragHandleClassName="title-bar"
             bounds="parent"
@@ -143,8 +150,8 @@ const WindowWrapper: React.FC<WindowWrapperProps> = ({
             onResizeStop={handleResizeStop}
             disableDragging={windowState.isMaximized}
             enableResizing={enableResizing !== false}
-            minWidth={minWidth || 300}
-            minHeight={minHeight || 200}
+            minWidth={minWidth}
+            minHeight={minHeight}
             maxHeight={maxHeight}
             maxWidth={maxWidth}
         >
