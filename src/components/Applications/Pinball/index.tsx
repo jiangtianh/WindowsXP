@@ -19,6 +19,14 @@ const Pinball: React.FC = () => {
     const windowRef = useRef<Rnd>(null);
     const iframeRef = useRef<HTMLIFrameElement>(null);
 
+    const effectiveSize = useMemo(() => {
+        return {
+            width: windowState.position.width || 300,
+            height: windowState.position.height || 200
+        };
+    }, [windowState.position.width, windowState.position.height]);
+
+
     const [isDragging, setIsDragging] = useState(false);
     const [isResizing, setIsResizing] = useState(false);
     const [localposition, setLocalPosition] = useState({
@@ -200,7 +208,7 @@ const Pinball: React.FC = () => {
             ref={windowRef}
             className={`window cursor-default ${windowState.isFocused ? '' : 'window-unfocused'} window-wrapper`}
             style={{ display: windowState.isMinimized ? 'none' : 'inline-block', zIndex: zIndex }}
-            size={{ width: windowState.position.width, height: windowState.position.height }}
+            size={effectiveSize}
             position={localposition}
             dragHandleClassName="title-bar"
             bounds="parent"
